@@ -17,6 +17,7 @@ animations = [{
 }]
 
 [node name="Niko" type="CharacterBody2D"]
+texture_filter = 1
 script = ExtResource("1_jnit1")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -27,3 +28,7 @@ debug_color = Color(0, 0.6, 0.701961, 0.419608)
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_1103n")
 animation = &"idle_s"
+
+[node name="Camera2D" type="Camera2D" parent="."]
+enabled = false
+zoom = Vector2(2.64, 2.64)
