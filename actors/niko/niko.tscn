@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=3 uid="uid://bs1igv1ntibpb"]
+
+[ext_resource type="Texture2D" uid="uid://c50bym0q8ej80" path="res://actors/niko/graphics/solo.png" id="1_u3m3g"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sv8md"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1103n"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_u3m3g")
+}],
+"loop": false,
+"name": &"idle_s",
+"speed": 0.0
+}]
+
+[node name="Niko" type="Node2D"]
+texture_filter = 1
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+z_index = 1
+shape = SubResource("RectangleShape2D_sv8md")
+debug_color = Color(0, 0.6, 0.701961, 0.419608)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D"]
+sprite_frames = SubResource("SpriteFrames_1103n")
+animation = &"idle_s"
