@@ -11,8 +11,17 @@ config_version=5
 [application]
 
 config/name="OneShotRedux"
+run/main_scene="res://actors/niko/niko.tscn"
 config/features=PackedStringArray("4.0", "GL Compatibility")
 config/icon="res://icon.svg"
+
+[editor]
+
+movie_writer/mix_rate=8000
+movie_writer/mjpeg_quality=0.28
+movie_writer/movie_file="C:/Users/User/Documents/game.avi"
+movie_writer/disable_vsync=true
+movie_writer/fps=30
 
 [input]
 
@@ -34,6 +43,11 @@ Up={
 Down={
 "deadzone": 0.5,
 "events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":4194322,"key_label":0,"unicode":0,"echo":false,"script":null)
+]
+}
+Pause={
+"deadzone": 0.5,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":4194305,"key_label":0,"unicode":0,"echo":false,"script":null)
 ]
 }
 

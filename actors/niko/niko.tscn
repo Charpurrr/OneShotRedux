@@ -17,6 +17,7 @@ animations = [{
 }]
 
 [node name="Niko" type="CharacterBody2D"]
+process_mode = 1
 texture_filter = 1
 script = ExtResource("1_jnit1")
 
