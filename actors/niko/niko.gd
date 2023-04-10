@@ -1,8 +1,12 @@
 extends CharacterBody2D
 
-var pause = preload("res://ui/pause_screen/pause_screen.tscn")
+@onready var camera = $Camera2D
 
+var pause = preload("res://ui/pause_screen/pause_screen.tscn")
 var speed = 100
+
+func _ready():
+	set_limits()
 
 func _physics_process(delta):
 	if Input.is_action_just_pressed("Pause"):
@@ -30,4 +34,10 @@ func _physics_process(delta):
 		velocity = Vector2.ZERO
 
 	move_and_slide()
+	
+func set_limits():
+	camera.limit_top = get_parent().limU
+	camera.limit_bottom = get_parent().limD
+	camera.limit_left = get_parent().limL
+	camera.limit_right = get_parent().limR
 

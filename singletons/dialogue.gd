@@ -1,5 +1,5 @@
 extends Node2D
-
+Dictionary
 var convo1 = [
 	"yo whats good famalan whats pooping lets goooo",
 	"yeaaa bro this is so much more efficient",
