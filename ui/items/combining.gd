@@ -21,7 +21,7 @@ func _ready():
 	
 func _process(delta):
 	for i in Items.items: #searches the items dictionary
-		if sort_array(selected) == sort_array(Items.items[i]): #if the selected array equals one of the values for a key in dictionary
+		if sort_array(selected) == sort_array(Items.items[i]): #if the selected array equals one of the values for a key in dictionary (sorted so that order is irrelevant)
 			for r in len(Items.inv): #searches the indexes of the inventory array
 				if selected[0] == Items.inv[r]: #if the first value of selected is found
 					Items.inv[r] = i #replace the value with the new item
