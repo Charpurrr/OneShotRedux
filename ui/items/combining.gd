@@ -12,7 +12,6 @@ var selected : Array
 
 func _ready():
 	populate_inventory()
-	
 	item1.connect("button_down", add_selectable.bind(item1.text))
 	item2.connect("button_down", add_selectable.bind(item2.text))
 	item3.connect("button_down", add_selectable.bind(item3.text))
@@ -22,8 +21,8 @@ func _ready():
 	
 func _process(delta):
 	for i in Items.items: #searches the items dictionary
-		if selected == Items.items[i]: #if the selected array equals one of the values for a key in dictionary
-			for r in range(Items.inv.size()): #searches the indexes of the inventory array
+		if sort_array(selected) == sort_array(Items.items[i]): #if the selected array equals one of the values for a key in dictionary
+			for r in len(Items.inv): #searches the indexes of the inventory array
 				if selected[0] == Items.inv[r]: #if the first value of selected is found
 					Items.inv[r] = i #replace the value with the new item
 				if selected[1] == Items.inv[r]: #if the second value of selected is found
@@ -42,6 +41,10 @@ func populate_inventory():
 		if i < 6:
 			t.text = Items.inv[i] #replace the text with the value of index of inventory
 			i += 1 #add 1 to index to go to the next value
+			
+func sort_array(array : Array):
+	array.sort()
+	return array
 
 func add_selectable(item):
 	selected.append(item)

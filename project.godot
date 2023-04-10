@@ -19,6 +19,11 @@ config/icon="res://icon.svg"
 
 Items="*res://singletons/items.gd"
 
+[display]
+
+window/size/viewport_width=608
+window/size/viewport_height=480
+
 [editor]
 
 movie_writer/mix_rate=8000

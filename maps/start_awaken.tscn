@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://c43kgrdauh1tp"]
+[gd_scene load_steps=5 format=3 uid="uid://ki8uh4vsate6"]
 
 [ext_resource type="PackedScene" uid="uid://dinee3k47kkwi" path="res://maps/graphics/tilesets/tile_map.tscn" id="1_yno30"]
 [ext_resource type="PackedScene" uid="uid://bgwgudwfaum5m" path="res://actors/objects/computer.tscn" id="2_xdghn"]
@@ -6,11 +6,6 @@
 [ext_resource type="PackedScene" uid="uid://c615j14yimai" path="res://actors/objects/window.tscn" id="4_2yqid"]
 
 [node name="Awaken" type="Node2D"]
-
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(192, 108)
-zoom = Vector2(3, 3)
-editor_draw_limits = true
 
 [node name="TileMap" parent="." instance=ExtResource("1_yno30")]
 position = Vector2(144, 144)
@@ -34,3 +29,7 @@ flip_h = true
 
 [node name="Window" parent="." instance=ExtResource("4_2yqid")]
 position = Vector2(152, 56)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(152, 120)
+zoom = Vector2(2, 2)

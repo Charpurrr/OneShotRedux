@@ -13,7 +13,7 @@ func _physics_process(delta):
 	input_vector.x = Input.get_action_strength("Right") - Input.get_action_strength("Left")
 	input_vector.y = Input.get_action_strength("Down") - Input.get_action_strength("Up")
 	
-	match input_vector:
+	match input_vector: #i hardcoded normalized vectors felt goofy
 		Vector2(1, 1):
 			input_vector = Vector2(atan(1/1), atan(1/1))
 		Vector2(-1, 1):
