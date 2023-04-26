@@ -1,7 +1,44 @@
-[gd_scene load_steps=2 format=3 uid="uid://c615j14yimai"]
+[gd_scene load_steps=7 format=3 uid="uid://c615j14yimai"]
 
 [ext_resource type="Texture2D" uid="uid://lxutel8txmuj" path="res://actors/objects/graphics/start_window.png" id="1_k673h"]
 
-[node name="Window" type="Sprite2D"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_8ubnj"]
+atlas = ExtResource("1_k673h")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hr6p4"]
+atlas = ExtResource("1_k673h")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_th3la"]
+atlas = ExtResource("1_k673h")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_irq6p"]
+atlas = ExtResource("1_k673h")
+region = Rect2(144, 0, 48, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_e7f0d"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8ubnj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hr6p4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_th3la")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_irq6p")
+}],
+"loop": true,
+"name": &"twinkle",
+"speed": 2.0
+}]
+
+[node name="Window" type="AnimatedSprite2D"]
 texture_filter = 1
-texture = ExtResource("1_k673h")
+sprite_frames = SubResource("SpriteFrames_e7f0d")
+animation = &"twinkle"
