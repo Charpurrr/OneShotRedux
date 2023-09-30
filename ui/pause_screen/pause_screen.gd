@@ -1,14 +1,13 @@
+class_name PauseMenu
 extends CanvasLayer
+# Class for the pause menu
 
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
+func _init():
 	get_tree().paused = true
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	await(get_tree().create_timer(0.1)).timeout
+func _process(_delta):
 	if Input.is_action_just_pressed("Pause"):
 		get_tree().paused = false
 		queue_free()

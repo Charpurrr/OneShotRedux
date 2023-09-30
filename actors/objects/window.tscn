@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://c615j14yimai"]
+[gd_scene load_steps=10 format=3 uid="uid://c615j14yimai"]
 
 [ext_resource type="Texture2D" uid="uid://lxutel8txmuj" path="res://actors/objects/graphics/start_window.png" id="1_k673h"]
+[ext_resource type="Texture2D" uid="uid://bb6ch8f24ou11" path="res://actors/objects/graphics/pain_test.png" id="2_cgerk"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8ubnj"]
 atlas = ExtResource("1_k673h")
@@ -38,7 +39,44 @@ animations = [{
 "speed": 2.0
 }]
 
+[sub_resource type="Animation" id="Animation_cf8nw"]
+resource_name = "twinkle"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(0.160784, 0.054902, 0.560784, 1), Color(0.317647, 0.109804, 0.988235, 1), Color(0.160784, 0.054902, 0.560784, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ipxs7"]
+_data = {
+"twinkle": SubResource("Animation_cf8nw")
+}
+
 [node name="Window" type="AnimatedSprite2D"]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_e7f0d")
 animation = &"twinkle"
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(0, 24)
+scale = Vector2(16.625, 13.75)
+color = Color(0.160784, 0.054902, 0.560784, 1)
+energy = 2.5
+shadow_enabled = true
+texture = ExtResource("2_cgerk")
+offset = Vector2(0, 5)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="PointLight2D"]
+autoplay = "twinkle"
+libraries = {
+"": SubResource("AnimationLibrary_ipxs7")
+}

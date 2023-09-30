@@ -1,7 +1,17 @@
-[gd_scene load_steps=2 format=3 uid="uid://co66iqn478jlq"]
+[gd_scene load_steps=3 format=3 uid="uid://co66iqn478jlq"]
 
 [ext_resource type="Texture2D" uid="uid://b7idbuo231nm4" path="res://actors/objects/graphics/bookshelf.png" id="1_4jgsb"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nsrxi"]
+size = Vector2(32, 32)
 
 [node name="Bookshelf" type="Sprite2D"]
 texture_filter = 1
 texture = ExtResource("1_4jgsb")
+offset = Vector2(0, -24)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, -16)
+shape = SubResource("RectangleShape2D_nsrxi")

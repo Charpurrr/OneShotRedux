@@ -1,4 +1,6 @@
+class_name CombiningFeature
 extends CanvasLayer
+# Class for combining items in the inventory
 
 @onready var item1 = $HBoxContainer/VBoxContainer/Item1
 @onready var item2 = $HBoxContainer/VBoxContainer/Item2
