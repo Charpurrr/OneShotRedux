@@ -1,15 +1,22 @@
-[gd_scene load_steps=17 format=3 uid="uid://dinee3k47kkwi"]
+[gd_scene load_steps=24 format=3 uid="uid://dinee3k47kkwi"]
 
 [ext_resource type="Texture2D" uid="uid://hnqxj4c8qvou" path="res://maps/graphics/tilesets/start_carpet.png" id="1_qdcpa"]
 [ext_resource type="Texture2D" uid="uid://ck8517v6hihka" path="res://maps/graphics/tilesets/start_filler.png" id="2_obep8"]
 [ext_resource type="Texture2D" uid="uid://wrfymgmidd5p" path="res://maps/graphics/tilesets/start_planks.png" id="3_81ove"]
 [ext_resource type="Texture2D" uid="uid://c7lc5d442gfuy" path="res://maps/graphics/tilesets/start_wallpaper.png" id="4_c767b"]
+[ext_resource type="Texture2D" uid="uid://cgg6b5t5a4yrj" path="res://maps/graphics/tilesets/start_planks_broken.png" id="5_u4b7l"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_gwvpb"]
 tile_data = PackedInt32Array(0, 3, 0, 1, 65539, 0, 2, 131075, 0)
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_pp1ul"]
 tile_data = PackedInt32Array(0, 3, 1, 1, 65539, 1, 2, 131075, 1)
+
+[sub_resource type="TileMapPattern" id="TileMapPattern_5a2tf"]
+tile_data = PackedInt32Array(0, 5, 0, 1, 65541, 0, 2, 131077, 0)
+
+[sub_resource type="TileMapPattern" id="TileMapPattern_rrcp5"]
+tile_data = PackedInt32Array(0, 5, 2, 1, 65541, 2, 2, 131077, 2)
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_h3bax"]
 tile_data = PackedInt32Array(0, 3, 2, 1, 65539, 2, 2, 131075, 2)
@@ -25,6 +32,15 @@ tile_data = PackedInt32Array(0, 131076, 0, 65536, 131076, 1, 131072, 131076, 2, 
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_2b1kp"]
 tile_data = PackedInt32Array(0, 196612, 0, 65536, 196612, 1, 131072, 196612, 2, 196608, 196612, 3)
+
+[sub_resource type="TileMapPattern" id="TileMapPattern_cxas6"]
+tile_data = PackedInt32Array(0, 262148, 0, 65536, 262148, 1, 131072, 262148, 2, 196608, 262148, 3)
+
+[sub_resource type="TileMapPattern" id="TileMapPattern_whtql"]
+tile_data = PackedInt32Array(0, 327684, 0, 65536, 327684, 1, 131072, 327684, 2, 196608, 327684, 3)
+
+[sub_resource type="TileMapPattern" id="TileMapPattern_x6h6c"]
+tile_data = PackedInt32Array(0, 5, 1, 1, 65541, 1, 2, 131077, 1)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_l1xp1"]
 resource_name = "Carpet"
@@ -1034,6 +1050,70 @@ texture = ExtResource("4_c767b")
 3:3/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 3:3/0/physics_layer_0/angular_velocity = 0.0
 3:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+4:2/0 = 0
+4:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+4:2/0/physics_layer_0/angular_velocity = 0.0
+5:2/0 = 0
+5:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+5:2/0/physics_layer_0/angular_velocity = 0.0
+5:3/0 = 0
+5:3/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+5:3/0/physics_layer_0/angular_velocity = 0.0
+4:3/0 = 0
+4:3/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+4:3/0/physics_layer_0/angular_velocity = 0.0
+4:1/0 = 0
+4:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+4:1/0/physics_layer_0/angular_velocity = 0.0
+4:0/0 = 0
+4:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+4:0/0/physics_layer_0/angular_velocity = 0.0
+5:0/0 = 0
+5:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+5:0/0/physics_layer_0/angular_velocity = 0.0
+5:1/0 = 0
+5:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+5:1/0/physics_layer_0/angular_velocity = 0.0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_do84k"]
+resource_name = "Broken Wood"
+texture = ExtResource("5_u4b7l")
+0:0/0 = 0
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-4, 8, -4, 4, 0, 4, 0, 0, 0, -4, -4, -4, -4, -8, 8, -8, 8, 8)
+1:0/0 = 0
+1:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:0/0/physics_layer_0/angular_velocity = 0.0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+2:0/0 = 0
+2:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+2:0/0/physics_layer_0/angular_velocity = 0.0
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(4, 8, 4, 0, 0, 0, 0, -4, 4, -4, 4, -8, -8, -8, -8, 8)
+0:1/0 = 0
+0:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:1/0/physics_layer_0/angular_velocity = 0.0
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(0, -8, 0, -4, 0, 0, 0, 4, -4, 4, -4, 8, 8, 8, 8, -8)
+1:1/0 = 0
+1:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:1/0/physics_layer_0/angular_velocity = 0.0
+1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+2:1/0 = 0
+2:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+2:1/0/physics_layer_0/angular_velocity = 0.0
+2:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(4, 8, 4, -4, 4, -8, -8, -8, -8, 8)
+0:2/0 = 0
+0:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:2/0/physics_layer_0/angular_velocity = 0.0
+0:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(0, -8, 0, 0, 0, 4, -4, 4, -8, 4, -8, 8, 8, 8, 8, -8, 0, -8)
+1:2/0 = 0
+1:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:2/0/physics_layer_0/angular_velocity = 0.0
+1:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+2:2/0 = 0
+2:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+2:2/0/physics_layer_0/angular_velocity = 0.0
+2:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(0, 8, 0, 0, 4, 0, 4, -8, -8, -8, -8, 8)
 
 [sub_resource type="TileSet" id="TileSet_m58vc"]
 physics_layer_0/collision_layer = 1
@@ -1045,6 +1125,7 @@ terrain_set_0/terrain_1/color = Color(0.635294, 0.176471, 0.694118, 1)
 sources/1 = SubResource("TileSetAtlasSource_l1xp1")
 sources/2 = SubResource("TileSetAtlasSource_y71s3")
 sources/3 = SubResource("TileSetAtlasSource_ufi6m")
+sources/5 = SubResource("TileSetAtlasSource_do84k")
 sources/4 = SubResource("TileSetAtlasSource_agoku")
 pattern_0 = SubResource("TileMapPattern_gwvpb")
 pattern_1 = SubResource("TileMapPattern_pp1ul")
@@ -1053,6 +1134,11 @@ pattern_3 = SubResource("TileMapPattern_afopq")
 pattern_4 = SubResource("TileMapPattern_h5cce")
 pattern_5 = SubResource("TileMapPattern_bpdmi")
 pattern_6 = SubResource("TileMapPattern_2b1kp")
+pattern_7 = SubResource("TileMapPattern_cxas6")
+pattern_8 = SubResource("TileMapPattern_whtql")
+pattern_9 = SubResource("TileMapPattern_x6h6c")
+pattern_10 = SubResource("TileMapPattern_5a2tf")
+pattern_11 = SubResource("TileMapPattern_rrcp5")
 
 [node name="TileMap" type="TileMap"]
 texture_filter = 1

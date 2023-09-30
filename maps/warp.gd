@@ -9,8 +9,9 @@ extends Node2D
 
 
 func _ready():
-	area.connect("body_entered", entered)
+	pass
+#	area.connect("body_entered", entered)
 
 
-func entered(body):
-	get_tree().change_scene_to_file(destination)
+#func entered(_body):
+#	get_tree().change_scene_to_file(destination)

@@ -65,8 +65,11 @@ _data = {
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_e7f0d")
 animation = &"twinkle"
+autoplay = "twinkle"
+frame_progress = 0.424827
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
+light_mask = 4
 position = Vector2(0, 24)
 scale = Vector2(16.625, 13.75)
 color = Color(0.160784, 0.054902, 0.560784, 1)

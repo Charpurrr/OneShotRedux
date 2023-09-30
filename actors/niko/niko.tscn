@@ -1,15 +1,16 @@
-[gd_scene load_steps=12 format=3 uid="uid://cj81lcigmv75t"]
+[gd_scene load_steps=14 format=3 uid="uid://cj81lcigmv75t"]
 
 [ext_resource type="Script" path="res://actors/niko/niko.gd" id="1_jnit1"]
 [ext_resource type="Texture2D" uid="uid://dd8npbmnwvm0b" path="res://actors/niko/graphics/idle.png" id="2_fqws1"]
 [ext_resource type="Script" path="res://actors/niko/camera.gd" id="3_j02ga"]
+[ext_resource type="Texture2D" uid="uid://bj5435hlpu0xx" path="res://lights/circle.png" id="4_5qsl3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sv8md"]
-size = Vector2(9, 4)
+size = Vector2(11, 4)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_g7kms"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_q67ww"]
 atlas = ExtResource("2_fqws1")
-region = Rect2(54, 0, 27, 30)
+region = Rect2(0, 0, 27, 30)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_a7pjj"]
 atlas = ExtResource("2_fqws1")
@@ -19,7 +20,7 @@ region = Rect2(27, 0, 27, 30)
 atlas = ExtResource("2_fqws1")
 region = Rect2(81, 0, 27, 30)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_tuh73"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_pcoys"]
 atlas = ExtResource("2_fqws1")
 region = Rect2(54, 0, 27, 30)
 
@@ -27,7 +28,7 @@ region = Rect2(54, 0, 27, 30)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_g7kms")
+"texture": SubResource("AtlasTexture_q67ww")
 }],
 "loop": true,
 "name": &"idle_bottom",
@@ -51,18 +52,21 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_tuh73")
+"texture": SubResource("AtlasTexture_pcoys")
 }],
 "loop": true,
 "name": &"idle_top",
 "speed": 5.0
 }]
 
-[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_rn64d"]
-polygon = PackedVector2Array(-7, 15, -7, 10, 8, 10, 8, 15)
-
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_r7omf"]
 polygon = PackedVector2Array(20, 0, 20, -20, 0, -20, 0, 0)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_rn64d"]
+polygon = PackedVector2Array(-4.5, 15, -4.5, 10, 4.5, 10, 4.5, 15)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_07f25"]
+polygon = PackedVector2Array(-5, 15, -5, 10, 6, 10, 6, 15)
 
 [node name="Niko" type="CharacterBody2D"]
 process_mode = 1
@@ -78,18 +82,31 @@ debug_color = Color(0, 0.6, 0.701961, 0.419608)
 y_sort_enabled = true
 position = Vector2(0, -15)
 sprite_frames = SubResource("SpriteFrames_1103n")
-animation = &"idle_top"
+animation = &"idle_bottom"
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(0, -10)
 zoom = Vector2(2, 2)
 script = ExtResource("3_j02ga")
 
-[node name="LightOccluder" type="LightOccluder2D" parent="."]
-position = Vector2(-0.5, -10)
-occluder = SubResource("OccluderPolygon2D_rn64d")
-
 [node name="ParticleOccluder" type="LightOccluder2D" parent="."]
 position = Vector2(-10, 0)
 occluder = SubResource("OccluderPolygon2D_r7omf")
 occluder_light_mask = 2
+
+[node name="LightOccluderVertical" type="LightOccluder2D" parent="."]
+visible = false
+position = Vector2(0, -13)
+occluder = SubResource("OccluderPolygon2D_rn64d")
+
+[node name="LightOccluderHorizontal" type="LightOccluder2D" parent="."]
+position = Vector2(-0.5, -13)
+occluder = SubResource("OccluderPolygon2D_07f25")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+visible = false
+light_mask = 4
+z_as_relative = false
+position = Vector2(-20, 0)
+blend_mode = 1
+texture = ExtResource("4_5qsl3")
