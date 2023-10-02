@@ -11,16 +11,14 @@ config_version=5
 [application]
 
 config/name="OneShotRedux"
-run/main_scene="res://maps/start_house/computer_hall.tscn"
+run/main_scene="res://world_machine.tscn"
 config/features=PackedStringArray("4.1", "GL Compatibility")
 config/icon="res://icon.svg"
 
 [autoload]
 
-RoomCoordinator="*res://utils/singletons/room_coordinator.gd"
 Dialogue="*res://utils/singletons/dialogue.gd"
 Items="*res://utils/singletons/items.gd"
-RoomIDs="*res://utils/singletons/room_ids.gd"
 
 [display]
 

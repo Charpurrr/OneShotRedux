@@ -1,0 +1,25 @@
+[gd_scene load_steps=6 format=3 uid="uid://dpqr115hjo48j"]
+
+[ext_resource type="Script" path="res://world_machine.gd" id="1_t7pnh"]
+[ext_resource type="Script" path="res://room_coordinator.gd" id="2_1pv4v"]
+[ext_resource type="PackedScene" uid="uid://cj81lcigmv75t" path="res://actors/niko/niko.tscn" id="2_3yced"]
+[ext_resource type="AudioStream" uid="uid://cf1iayc5t2642" path="res://music/phosphor.ogg" id="3_f2jln"]
+[ext_resource type="Script" path="res://actors/niko/camera.gd" id="3_vs8hw"]
+
+[node name="WorldMachine" type="Node2D"]
+script = ExtResource("1_t7pnh")
+
+[node name="RoomCoordinator" type="Node2D" parent="."]
+script = ExtResource("2_1pv4v")
+
+[node name="Niko" parent="." instance=ExtResource("2_3yced")]
+position = Vector2(152, 130)
+
+[node name="Camera" type="Camera2D" parent="Niko"]
+position = Vector2(0, -10)
+zoom = Vector2(2, 2)
+script = ExtResource("3_vs8hw")
+
+[node name="BGM" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_f2jln")
+volume_db = -10.0

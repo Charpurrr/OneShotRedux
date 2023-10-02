@@ -4,7 +4,6 @@ extends CharacterBody2D
 
 
 @onready var doll : AnimatedSprite2D = $Doll
-@onready var camera : Camera2D = $Camera2D
 
 @onready var occluder_h : LightOccluder2D = $LightOccluderHorizontal
 @onready var occluder_v : LightOccluder2D = $LightOccluderVertical

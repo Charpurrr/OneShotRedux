@@ -1,6 +1,6 @@
-class_name Room
+class_name RoomInfo
 extends Node2D
-# Base class for rooms
+# Class for storing room data
 
 
 ## Camera limit (left side)
@@ -18,15 +18,14 @@ extends Node2D
 ## This room's ID
 @export var id : int = 0
 
-@onready var niko : CharacterBody2D = $Niko
 @onready var warps : Node2D = $Warps
 
 
-func _ready():
-	RoomCoordinator.current_room = self
-
-	for warp in warps.get_children():
-		if warp.destination == RoomCoordinator.current_room_id and RoomCoordinator.next_room_id == id:
-			niko.position = warp.position
-
-	RoomCoordinator.current_room_id = id
+#func _ready():
+#	RoomCoordinator.current_room = self
+#
+#	for warp in warps.get_children():
+#		if warp.destination == RoomCoordinator.current_room_id and RoomCoordinator.next_room_id == id:
+#			niko.position = warp.position
+#
+#	RoomCoordinator.current_room_id = id
