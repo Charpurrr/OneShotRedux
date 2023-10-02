@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://cj81lcigmv75t"]
+[gd_scene load_steps=31 format=3 uid="uid://cj81lcigmv75t"]
 
 [ext_resource type="Script" path="res://actors/niko/niko.gd" id="1_jnit1"]
 [ext_resource type="Texture2D" uid="uid://dd8npbmnwvm0b" path="res://actors/niko/graphics/idle.png" id="2_fqws1"]
@@ -41,6 +41,38 @@ region = Rect2(54, 0, 27, 30)
 atlas = ExtResource("3_yf3ee")
 region = Rect2(81, 0, 27, 30)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_jkv0t"]
+atlas = ExtResource("3_yf3ee")
+region = Rect2(0, 60, 27, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ox2un"]
+atlas = ExtResource("3_yf3ee")
+region = Rect2(27, 60, 27, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vihf0"]
+atlas = ExtResource("3_yf3ee")
+region = Rect2(54, 60, 27, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b5fa5"]
+atlas = ExtResource("3_yf3ee")
+region = Rect2(81, 60, 27, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0tho4"]
+atlas = ExtResource("3_yf3ee")
+region = Rect2(0, 90, 27, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qmknv"]
+atlas = ExtResource("3_yf3ee")
+region = Rect2(27, 90, 27, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oyn81"]
+atlas = ExtResource("3_yf3ee")
+region = Rect2(54, 90, 27, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pfvcc"]
+atlas = ExtResource("3_yf3ee")
+region = Rect2(81, 90, 27, 30)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_n8q7p"]
 atlas = ExtResource("3_yf3ee")
 region = Rect2(0, 30, 27, 30)
@@ -64,7 +96,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_q67ww")
 }],
 "loop": true,
-"name": &"idle_bottom",
+"name": &"idle_down",
 "speed": 5.0
 }, {
 "frames": [{
@@ -88,7 +120,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_pcoys")
 }],
 "loop": true,
-"name": &"idle_top",
+"name": &"idle_up",
 "speed": 5.0
 }, {
 "frames": [{
@@ -105,7 +137,41 @@ animations = [{
 "texture": SubResource("AtlasTexture_2g1y5")
 }],
 "loop": true,
-"name": &"walk_bottom",
+"name": &"walk_down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jkv0t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ox2un")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vihf0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b5fa5")
+}],
+"loop": true,
+"name": &"walk_left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0tho4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qmknv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oyn81")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pfvcc")
+}],
+"loop": true,
+"name": &"walk_right",
 "speed": 5.0
 }, {
 "frames": [{
@@ -122,7 +188,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_8n647")
 }],
 "loop": true,
-"name": &"walk_top",
+"name": &"walk_up",
 "speed": 5.0
 }]
 
@@ -149,7 +215,7 @@ debug_color = Color(0, 0.6, 0.701961, 0.419608)
 y_sort_enabled = true
 position = Vector2(0, -15)
 sprite_frames = SubResource("SpriteFrames_1103n")
-animation = &"walk_top"
+animation = &"walk_left"
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(0, -10)

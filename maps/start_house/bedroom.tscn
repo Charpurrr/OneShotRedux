@@ -1,26 +1,24 @@
-[gd_scene load_steps=5 format=3 uid="uid://sa7txwhtg6vn"]
+[gd_scene load_steps=5 format=3 uid="uid://cotpevbj3cw7"]
 
 [ext_resource type="PackedScene" uid="uid://dinee3k47kkwi" path="res://maps/graphics/tilesets/tile_map.tscn" id="1_1wxnv"]
 [ext_resource type="Script" path="res://maps/room_info.gd" id="1_fs5pt"]
-[ext_resource type="PackedScene" uid="uid://cu8vr3ax0hr1r" path="res://maps/warp.tscn" id="3_k1rvt"]
+[ext_resource type="PackedScene" path="res://maps/warp.tscn" id="3_k1rvt"]
 [ext_resource type="PackedScene" uid="uid://cj81lcigmv75t" path="res://actors/niko/niko.tscn" id="4_t2cut"]
 
-[node name="Bedroom" type="Node2D" node_paths=PackedStringArray("transitions", "niko")]
+[node name="Bedroom" type="Node2D"]
 script = ExtResource("1_fs5pt")
-transitions = NodePath("Transitions")
-niko = NodePath("Niko")
 lim_r = 304
 lim_b = 216
 id = 1
 
+[node name="Niko" parent="." instance=ExtResource("4_t2cut")]
+position = Vector2(333, 167)
+
 [node name="TileMap" parent="." instance=ExtResource("1_1wxnv")]
 layer_0/tile_data = PackedInt32Array(0, 524290, 0, 1, 655362, 0, 2, 655362, 0, 3, 655362, 0, 4, 655362, 0, 5, 655362, 0, 6, 655362, 0, 7, 655362, 0, 8, 655362, 0, 9, 655362, 0, 10, 655362, 0, 11, 655362, 0, 12, 655362, 0, 13, 655362, 0, 14, 655362, 0, 15, 655362, 0, 16, 655362, 0, 17, 655362, 0, 18, 720898, 0, 65536, 524290, 1, 131072, 524290, 1, 196608, 524290, 1, 262144, 524290, 1, 327680, 524290, 1, 393216, 524290, 1, 458752, 524290, 1, 524288, 524290, 1, 589824, 524290, 1, 655360, 524290, 1, 720896, 524290, 1, 786432, 524290, 1, 851968, 524290, 1, 917504, 524290, 3, 917505, 393218, 3, 917506, 131074, 3, 917507, 131074, 3, 917508, 131074, 3, 917509, 131074, 3, 917510, 131074, 3, 917511, 131074, 3, 917512, 131074, 3, 917513, 131074, 3, 917514, 131074, 3, 917515, 131074, 3, 917516, 131074, 3, 917517, 131074, 3, 917518, 131074, 3, 917519, 131074, 3, 917520, 131074, 3, 917521, 327682, 3, 917522, 720898, 3, 851986, 720898, 2, 786450, 720898, 2, 720914, 720898, 2, 655378, 720898, 2, 589842, 720898, 2, 524306, 720898, 2, 458770, 720898, 2, 393234, 720898, 2, 65554, 720898, 2, 131090, 720898, 2, 196626, 720898, 2, 262162, 720898, 2, 327698, 720898, 2, 851969, 720898, 2, 786433, 720898, 2, 720897, 720898, 2, 655361, 720898, 2, 589825, 720898, 2, 524289, 720898, 2, 458753, 720898, 2, 393217, 720898, 2, 327681, 720898, 2, 262145, 720898, 2, 196609, 720898, 2, 131073, 720898, 2, 65537, 393218, 2, 65538, 589826, 3, 65539, 589826, 3, 65540, 589826, 3, 65541, 589826, 3, 65542, 589826, 3, 65543, 589826, 3, 65544, 589826, 3, 65545, 589826, 3, 65546, 589826, 3, 65547, 589826, 3, 65548, 589826, 3, 65549, 589826, 3, 65550, 589826, 3, 65551, 589826, 3, 65552, 589826, 3, 65553, 327682, 2, 131089, 524290, 1, 196625, 524290, 1, 262161, 524290, 1, 327697, 524290, 1, 393233, 524290, 1, 458769, 524290, 1, 524305, 524290, 1, 589841, 524290, 1, 655377, 524290, 1, 720913, 524290, 1, 786449, 524290, 1, 851985, 524290, 1)
 
-[node name="Transitions" type="Node2D" parent="."]
+[node name="Warps" type="Node2D" parent="."]
 
-[node name="ToX" parent="Transitions" instance=ExtResource("3_k1rvt")]
+[node name="ToX" parent="Warps" instance=ExtResource("3_k1rvt")]
 position = Vector2(253, 69)
-type = "Subarea"
-
-[node name="Niko" parent="." instance=ExtResource("4_t2cut")]
-position = Vector2(333, 167)
+type = "Instant"

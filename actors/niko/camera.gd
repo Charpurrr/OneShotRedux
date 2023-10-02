@@ -3,7 +3,9 @@ extends Camera2D
 # Controling and managing the camera
 
 
-func set_limits():
+func _ready():
+	await owner.get_parent().ready
+
 	limit_bottom = RoomCoordinator.current_room.lim_b
 	limit_right = RoomCoordinator.current_room.lim_r
 	limit_left = RoomCoordinator.current_room.lim_l

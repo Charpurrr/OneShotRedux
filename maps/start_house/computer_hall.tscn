@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://maps/room_info.gd" id="1_sgg1m"]
 [ext_resource type="PackedScene" uid="uid://bgwgudwfaum5m" path="res://actors/objects/computer.tscn" id="2_2i8xa"]
 [ext_resource type="PackedScene" uid="uid://co66iqn478jlq" path="res://actors/objects/bookshelf.tscn" id="3_0wbow"]
-[ext_resource type="PackedScene" uid="uid://cu8vr3ax0hr1r" path="res://maps/warp.tscn" id="3_mgsp3"]
+[ext_resource type="PackedScene" path="res://maps/warp.tscn" id="3_mgsp3"]
 [ext_resource type="PackedScene" uid="uid://cj81lcigmv75t" path="res://actors/niko/niko.tscn" id="4_o5tn1"]
 [ext_resource type="PackedScene" uid="uid://c615j14yimai" path="res://actors/objects/window.tscn" id="5_y22u4"]
 [ext_resource type="PackedScene" uid="uid://dinee3k47kkwi" path="res://maps/graphics/tilesets/tile_map.tscn" id="6_8433w"]
@@ -38,14 +38,15 @@ turbulence_enabled = true
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_a7osv"]
 polygon = PackedVector2Array(-120, 72, -57, 72, -56, 72, -56, 64, -24, 64, -24, -24, 24, -24, 24, 64, 56, 64, 56, 72, 120, 72, 120, 120, 56, 120, 56, 136, 24, 136, 24, 136, 24, 168, -24, 168, -24, 136, -56, 136, -56, 120, -120, 120)
 
-[node name="ComputerHall" type="Node2D" node_paths=PackedStringArray("transitions", "niko")]
+[node name="ComputerHall" type="Node2D"]
 y_sort_enabled = true
 texture_filter = 1
 script = ExtResource("1_sgg1m")
-transitions = NodePath("Transitions")
-niko = NodePath("Niko")
 lim_r = 304
 lim_b = 216
+
+[node name="Niko" parent="." instance=ExtResource("4_o5tn1")]
+position = Vector2(152, 120)
 
 [node name="Environment" type="Node2D" parent="."]
 z_index = -2
@@ -72,9 +73,9 @@ fixed_fps = 60
 position = Vector2(152, 56)
 occluder = SubResource("OccluderPolygon2D_a7osv")
 
-[node name="Transitions" type="Node2D" parent="."]
+[node name="Warps" type="Node2D" parent="."]
 
-[node name="ToX" parent="Transitions" instance=ExtResource("3_mgsp3")]
+[node name="ToX" parent="Warps" instance=ExtResource("3_mgsp3")]
 position = Vector2(42, 152)
 destination = 1
 type = "Main"
@@ -88,9 +89,6 @@ position = Vector2(192, 120)
 [node name="Bookshelf2" parent="." instance=ExtResource("3_0wbow")]
 position = Vector2(112, 120)
 flip_h = true
-
-[node name="Niko" parent="." instance=ExtResource("4_o5tn1")]
-position = Vector2(152, 120)
 
 [node name="Window" parent="." instance=ExtResource("5_y22u4")]
 position = Vector2(152, 56)
