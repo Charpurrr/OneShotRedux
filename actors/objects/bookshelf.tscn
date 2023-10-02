@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://co66iqn478jlq"]
+[gd_scene load_steps=4 format=3 uid="uid://co66iqn478jlq"]
 
 [ext_resource type="Texture2D" uid="uid://b7idbuo231nm4" path="res://actors/objects/graphics/bookshelf.png" id="1_4jgsb"]
+[ext_resource type="Script" path="res://actors/objects/interactable.gd" id="2_1xfpj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nsrxi"]
 size = Vector2(32, 32)
@@ -9,8 +10,11 @@ size = Vector2(32, 32)
 texture_filter = 1
 texture = ExtResource("1_4jgsb")
 offset = Vector2(0, -24)
+script = ExtResource("2_1xfpj")
+interaction_type = "Dialog"
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 257
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2(0, -16)

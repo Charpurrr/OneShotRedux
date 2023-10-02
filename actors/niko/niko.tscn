@@ -1,9 +1,10 @@
-[gd_scene load_steps=30 format=3 uid="uid://cj81lcigmv75t"]
+[gd_scene load_steps=31 format=3 uid="uid://cj81lcigmv75t"]
 
 [ext_resource type="Script" path="res://actors/niko/niko.gd" id="1_jnit1"]
 [ext_resource type="Texture2D" uid="uid://dd8npbmnwvm0b" path="res://actors/niko/graphics/idle.png" id="2_fqws1"]
 [ext_resource type="Texture2D" uid="uid://dyyj2f32hriwp" path="res://actors/niko/graphics/walk.png" id="3_yf3ee"]
 [ext_resource type="Texture2D" uid="uid://bj5435hlpu0xx" path="res://lights/circle.png" id="4_5qsl3"]
+[ext_resource type="Script" path="res://actors/niko/interact_ray.gd" id="4_y6eee"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_q67ww"]
 atlas = ExtResource("2_fqws1")
@@ -215,6 +216,11 @@ animation = &"idle_down"
 z_index = 1
 shape = SubResource("RectangleShape2D_sv8md")
 debug_color = Color(0, 0.6, 0.701961, 0.419608)
+
+[node name="InteractRay" type="RayCast2D" parent="."]
+target_position = Vector2(0, 5)
+collision_mask = 256
+script = ExtResource("4_y6eee")
 
 [node name="ParticleOccluder" type="LightOccluder2D" parent="."]
 position = Vector2(-10, 0)
