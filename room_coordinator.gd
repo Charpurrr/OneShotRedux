@@ -2,6 +2,7 @@ class_name RoomCoordinator
 extends Node2D
 # Handles loading and transitioning between rooms and areas
 
+
 @onready var wm : Node2D = owner
 
 @onready var camera : Node2D = owner.get_node("Niko").get_node("Camera")

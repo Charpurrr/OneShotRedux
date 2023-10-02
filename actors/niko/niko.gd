@@ -5,6 +5,8 @@ extends CharacterBody2D
 
 @onready var doll : AnimatedSprite2D = $Doll
 
+@onready var interact_ray : RayCast2D = $InteractRay
+
 @onready var occluder_h : LightOccluder2D = $LightOccluderHorizontal
 @onready var occluder_v : LightOccluder2D = $LightOccluderVertical
 
@@ -24,8 +26,8 @@ var warped : bool # Check if Niko has recently warped
 func _physics_process(_delta):
 	pause()
 	movement()
-	set_animation()
 	move_and_slide()
+	set_animation()
 
 	input_vector = Input.get_vector("left", "right", "up", "down")
 
@@ -41,24 +43,36 @@ func movement():
 
 
 ## Set facing_direction depending on the input
-func set_facing():
+func set_facing(): # IMPROPER UPDATES TO INTERACT RAY (03/10)
 	var signed_vector : Vector2 = sign(input_vector)
 
 	set_occluder(signed_vector)
 
 	if signed_vector.dot(facing_vector) <= 0:
-		if signed_vector.y == 1:
-			facing_direction = "down"
-			facing_vector = Vector2.DOWN
-		elif signed_vector.y == -1:
-			facing_direction = "up"
-			facing_vector = Vector2.UP
-		elif signed_vector.x == 1:
-			facing_direction = "right"
-			facing_vector = Vector2.RIGHT
-		elif signed_vector.x == -1:
-			facing_direction = "left"
-			facing_vector = Vector2.LEFT
+		facing_vector = signed_vector
+
+		if facing_vector.x != 0:
+			facing_vector.y = 0
+
+		if facing_vector != Vector2.ZERO:
+			facing_direction = get_direction_str(facing_vector)
+
+		interact_ray.target_position = facing_vector * Vector2(8.5, 5)
+
+
+## Get the directional string associated with vector
+func get_direction_str(vector : Vector2) -> String:
+	match vector:
+		Vector2.DOWN:
+			return "down"
+		Vector2.UP:
+			return "up"
+		Vector2.RIGHT:
+			return "right"
+		Vector2.LEFT:
+			return "left"
+		_:
+			return ""
 
 
 ## Apply the correct animations to Niko
