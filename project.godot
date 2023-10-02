@@ -20,6 +20,7 @@ config/icon="res://icon.svg"
 RoomCoordinator="*res://utils/singletons/room_coordinator.gd"
 Dialogue="*res://utils/singletons/dialogue.gd"
 Items="*res://utils/singletons/items.gd"
+RoomIDs="*res://utils/singletons/room_ids.gd"
 
 [display]
 

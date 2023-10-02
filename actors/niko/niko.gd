@@ -15,6 +15,8 @@ const RUN_SPEED : int = 100
 const SPEED : int = 50
 
 var facing_direction : StringName = "bottom"
+var warped : bool = false
+
 
 
 func _physics_process(_delta):
