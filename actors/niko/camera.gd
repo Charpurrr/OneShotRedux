@@ -17,6 +17,7 @@ func _ready():
 
 ## Set the camera limits depending on current_room
 func set_limits():
+	current_room = wm.room_coordinator.current_room
 	limit_bottom = current_room.lim_b
 	limit_right = current_room.lim_r
 	limit_left = current_room.lim_l

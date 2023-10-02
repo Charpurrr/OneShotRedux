@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://maps/room_info.gd" id="1_sgg1m"]
 [ext_resource type="PackedScene" uid="uid://bgwgudwfaum5m" path="res://actors/objects/computer.tscn" id="2_2i8xa"]
 [ext_resource type="PackedScene" uid="uid://co66iqn478jlq" path="res://actors/objects/bookshelf.tscn" id="3_0wbow"]
-[ext_resource type="PackedScene" uid="uid://bsfrt71teyvbf" path="res://maps/warp.tscn" id="3_mgsp3"]
+[ext_resource type="PackedScene" uid="uid://cu8vr3ax0hr1r" path="res://maps/warp.tscn" id="3_mgsp3"]
 [ext_resource type="PackedScene" uid="uid://c615j14yimai" path="res://actors/objects/window.tscn" id="5_y22u4"]
 [ext_resource type="PackedScene" uid="uid://dinee3k47kkwi" path="res://maps/graphics/tilesets/tile_map.tscn" id="6_8433w"]
 [ext_resource type="PackedScene" uid="uid://b2s1fk6sc3r7m" path="res://actors/objects/withered_plant.tscn" id="8_sdldq"]
@@ -72,7 +72,9 @@ occluder = SubResource("OccluderPolygon2D_a7osv")
 [node name="Warps" type="Node2D" parent="."]
 
 [node name="ToX" parent="Warps" instance=ExtResource("3_mgsp3")]
-position = Vector2(42, 152)
+position = Vector2(261, 152)
+dest_area = "start_house"
+destination = "bedroom"
 
 [node name="Computer" parent="." instance=ExtResource("2_2i8xa")]
 position = Vector2(152, 112)
