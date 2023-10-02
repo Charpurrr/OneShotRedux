@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://c43kgrdauh1tp"]
+[gd_scene load_steps=12 format=3 uid="uid://c43kgrdauh1tp"]
 
 [ext_resource type="Script" path="res://maps/room_info.gd" id="1_sgg1m"]
 [ext_resource type="PackedScene" uid="uid://bgwgudwfaum5m" path="res://actors/objects/computer.tscn" id="2_2i8xa"]
@@ -6,7 +6,6 @@
 [ext_resource type="PackedScene" uid="uid://cj81lcigmv75t" path="res://actors/niko/niko.tscn" id="4_o5tn1"]
 [ext_resource type="PackedScene" uid="uid://c615j14yimai" path="res://actors/objects/window.tscn" id="5_y22u4"]
 [ext_resource type="PackedScene" uid="uid://dinee3k47kkwi" path="res://maps/graphics/tilesets/tile_map.tscn" id="6_8433w"]
-[ext_resource type="PackedScene" uid="uid://cu8vr3ax0hr1r" path="res://maps/base_trans.tscn" id="7_kwwfj"]
 [ext_resource type="PackedScene" uid="uid://b2s1fk6sc3r7m" path="res://actors/objects/withered_plant.tscn" id="8_sdldq"]
 
 [sub_resource type="Gradient" id="Gradient_rtecs"]
@@ -70,15 +69,8 @@ fixed_fps = 60
 position = Vector2(152, 56)
 occluder = SubResource("OccluderPolygon2D_a7osv")
 
-[node name="Transitions" type="Node2D" parent="."]
-visible = false
-
-[node name="ToX" parent="Transitions" instance=ExtResource("7_kwwfj")]
-visible = false
-position = Vector2(279, 152)
-
 [node name="Computer" parent="." instance=ExtResource("2_2i8xa")]
-position = Vector2(151, 98)
+position = Vector2(152, 112)
 
 [node name="Bookshelf" parent="." instance=ExtResource("3_0wbow")]
 position = Vector2(192, 120)

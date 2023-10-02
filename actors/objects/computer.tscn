@@ -1,7 +1,17 @@
-[gd_scene load_steps=2 format=3 uid="uid://bgwgudwfaum5m"]
+[gd_scene load_steps=3 format=3 uid="uid://bgwgudwfaum5m"]
 
 [ext_resource type="Texture2D" uid="uid://g0e5kpjbdwji" path="res://actors/objects/graphics/computer.png" id="1_wjg77"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uhe1m"]
+size = Vector2(28, 13)
 
 [node name="Computer" type="Sprite2D"]
 texture_filter = 1
 texture = ExtResource("1_wjg77")
+offset = Vector2(0, -13)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, -7.5)
+shape = SubResource("RectangleShape2D_uhe1m")

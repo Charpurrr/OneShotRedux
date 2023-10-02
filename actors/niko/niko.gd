@@ -14,7 +14,7 @@ const PAUSE_MENU : PackedScene = preload("res://ui/pause_screen/pause_screen.tsc
 const RUN_SPEED : int = 100
 const SPEED : int = 50
 
-var facing_direction : StringName = "down"
+var facing_direction : StringName = "bottom"
 
 
 func _physics_process(_delta):
@@ -50,8 +50,10 @@ func set_facing(input_vector : Vector2):
 	elif signed_vector.x == -1:
 		facing_direction = "left"
 
-	if input_vector != Vector2.ZERO:
-		doll.animation = "idle_" + facing_direction
+	if input_vector == Vector2.ZERO or velocity == Vector2.ZERO:
+		doll.play("idle_" + facing_direction)
+	else:
+		doll.play("walk_" + facing_direction)
 
 
 ## Set light occluders based on the input
