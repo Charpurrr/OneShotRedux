@@ -13,6 +13,7 @@ script = ExtResource("1_t7pnh")
 script = ExtResource("2_1pv4v")
 
 [node name="Niko" parent="." instance=ExtResource("2_3yced")]
+z_index = 1
 position = Vector2(152, 130)
 
 [node name="Camera" type="Camera2D" parent="Niko"]

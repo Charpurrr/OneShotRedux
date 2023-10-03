@@ -22,14 +22,20 @@ var input_vector : Vector2 # Current directional input's vector
 
 var warped : bool # Check if Niko has recently warped
 
+var can_move : bool = true
+
 
 func _physics_process(_delta):
+	print(can_move)
 	pause()
 	movement()
 	move_and_slide()
 	set_animation()
 
-	input_vector = Input.get_vector("left", "right", "up", "down")
+	if can_move == true:
+		input_vector = Input.get_vector("left", "right", "up", "down")
+	else:
+		input_vector = Vector2(0, 0)
 
 
 ## Handles movement

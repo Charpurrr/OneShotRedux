@@ -21,11 +21,12 @@ extends Node2D
 @onready var warps : Node2D = $Warps
 
 
-#func _ready():
-#	RoomCoordinator.current_room = self
-#
-#	for warp in warps.get_children():
-#		if warp.destination == RoomCoordinator.current_room_id and RoomCoordinator.next_room_id == id:
-#			niko.position = warp.position
-#
-#	RoomCoordinator.current_room_id = id
+func _ready():
+	disable_collision()
+	for warp in warps.get_children():
+		pass
+
+func disable_collision():
+	set_visibility_layer_bit(1, false)
+	
+

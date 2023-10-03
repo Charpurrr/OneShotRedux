@@ -8,6 +8,10 @@ extends Node2D
 
 @export var destination : String
 
+@export var ID : int
+
+@export var dest_ID : int
+
 @onready var wm : Node2D = $/root/WorldMachine
 
 @onready var area = $Area2D

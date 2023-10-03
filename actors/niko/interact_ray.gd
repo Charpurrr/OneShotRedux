@@ -5,4 +5,4 @@ extends RayCast2D
 
 func _process(_delta):
 	if is_colliding():
-		
+		pass
