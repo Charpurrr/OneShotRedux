@@ -1,0 +1,86 @@
+[gd_scene load_steps=5 format=3 uid="uid://cj4x48ba4v66k"]
+
+[ext_resource type="Texture2D" uid="uid://ckmssn2013cug" path="res://maps/graphics/warps.png" id="1_f4vf5"]
+[ext_resource type="Script" path="res://maps/warps/warp_tile.gd" id="2_hlknp"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_53gw4"]
+resource_name = "warps"
+texture = ExtResource("1_f4vf5")
+0:0/0 = 0
+0:0/0/custom_data_0 = Vector2(0, -1)
+0:0/0/custom_data_1 = Vector2(0, -1)
+0:0/0/custom_data_2 = &"input_based"
+1:0/0 = 0
+1:0/0/custom_data_0 = Vector2(0, -1)
+1:0/0/custom_data_1 = Vector2(-1, 0)
+1:0/0/custom_data_2 = &"input_based"
+2:0/0 = 0
+2:0/0/custom_data_0 = Vector2(0, -1)
+2:0/0/custom_data_1 = Vector2(1, 0)
+2:0/0/custom_data_2 = &"input_based"
+0:1/0 = 0
+0:1/0/custom_data_0 = Vector2(0, 1)
+0:1/0/custom_data_1 = Vector2(0, 1)
+0:1/0/custom_data_2 = &"input_based"
+1:1/0 = 0
+1:1/0/custom_data_0 = Vector2(0, 1)
+1:1/0/custom_data_1 = Vector2(-1, 0)
+1:1/0/custom_data_2 = &"input_based"
+2:1/0 = 0
+2:1/0/custom_data_0 = Vector2(0, 1)
+2:1/0/custom_data_1 = Vector2(1, 0)
+2:1/0/custom_data_2 = &"input_based"
+0:2/0 = 0
+0:2/0/custom_data_0 = Vector2(-1, 0)
+0:2/0/custom_data_1 = Vector2(-1, 0)
+0:2/0/custom_data_2 = &"input_based"
+1:2/0 = 0
+1:2/0/custom_data_0 = Vector2(-1, 0)
+1:2/0/custom_data_1 = Vector2(0, -1)
+1:2/0/custom_data_2 = &"input_based"
+2:2/0 = 0
+2:2/0/custom_data_0 = Vector2(-1, 0)
+2:2/0/custom_data_1 = Vector2(0, 1)
+2:2/0/custom_data_2 = &"input_based"
+0:3/0 = 0
+0:3/0/custom_data_0 = Vector2(1, 0)
+0:3/0/custom_data_1 = Vector2(1, 0)
+0:3/0/custom_data_2 = &"input_based"
+1:3/0 = 0
+1:3/0/custom_data_0 = Vector2(1, 0)
+1:3/0/custom_data_1 = Vector2(0, -1)
+1:3/0/custom_data_2 = &"input_based"
+2:3/0 = 0
+2:3/0/custom_data_0 = Vector2(1, 0)
+2:3/0/custom_data_1 = Vector2(0, 1)
+2:3/0/custom_data_2 = &"input_based"
+4:0/0 = 0
+4:0/0/custom_data_0 = Vector2(0, -1)
+4:0/0/custom_data_1 = Vector2(0, -1)
+4:0/0/custom_data_2 = &"enter_based"
+4:1/0 = 0
+4:1/0/custom_data_0 = Vector2(0, 1)
+4:1/0/custom_data_1 = Vector2(0, 1)
+4:1/0/custom_data_2 = &"enter_based"
+4:2/0 = 0
+4:2/0/custom_data_0 = Vector2(-1, 0)
+4:2/0/custom_data_1 = Vector2(-1, 0)
+4:2/0/custom_data_2 = &"enter_based"
+4:3/0 = 0
+4:3/0/custom_data_0 = Vector2(1, 0)
+4:3/0/custom_data_1 = Vector2(1, 0)
+4:3/0/custom_data_2 = &"enter_based"
+
+[sub_resource type="TileSet" id="TileSet_up6i6"]
+custom_data_layer_0/name = "warp_enter"
+custom_data_layer_0/type = 5
+custom_data_layer_1/name = "warp_exit"
+custom_data_layer_1/type = 5
+custom_data_layer_2/name = "enter_type"
+custom_data_layer_2/type = 21
+sources/0 = SubResource("TileSetAtlasSource_53gw4")
+
+[node name="Warp" type="TileMap"]
+tile_set = SubResource("TileSet_up6i6")
+format = 2
+script = ExtResource("2_hlknp")

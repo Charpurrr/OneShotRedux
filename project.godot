@@ -107,7 +107,7 @@ run={
 2d_render/layer_2="Particles"
 2d_render/layer_3="Light"
 2d_physics/layer_1="solid"
-2d_physics/layer_2="Layer 2"
+2d_physics/layer_2="player"
 2d_physics/layer_9="interactable"
 
 [rendering]

@@ -26,7 +26,6 @@ var can_move : bool = true
 
 
 func _physics_process(_delta):
-	print(can_move)
 	pause()
 	movement()
 	move_and_slide()
@@ -43,8 +42,10 @@ func movement():
 	set_facing()
 
 	if not Input.is_action_pressed("run"):
+		doll.speed_scale = 1
 		velocity = input_vector * SPEED
 	else:
+		doll.speed_scale = 2
 		velocity = input_vector * RUN_SPEED
 
 
@@ -86,7 +87,7 @@ func set_animation():
 	var previous_frame = doll.frame
 	var previous_frame_progress = doll.frame_progress
 
-	if input_vector == Vector2.ZERO or velocity == Vector2.ZERO:
+	if input_vector == Vector2.ZERO or velocity.is_equal_approx(Vector2.ZERO):
 		doll.play("idle_" + facing_direction)
 	else:
 		doll.set_frame_and_progress(previous_frame, previous_frame_progress)

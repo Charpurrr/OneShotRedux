@@ -204,6 +204,7 @@ polygon = PackedVector2Array(-5, 15, -5, 10, 6, 10, 6, 15)
 [node name="Niko" type="CharacterBody2D"]
 process_mode = 1
 texture_filter = 1
+collision_layer = 3
 script = ExtResource("1_jnit1")
 
 [node name="Doll" type="AnimatedSprite2D" parent="."]

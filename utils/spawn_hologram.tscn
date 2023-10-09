@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://dqm50r0v0cjcy"]
+
+[ext_resource type="Texture2D" uid="uid://cbco785r62hw5" path="res://utils/paper_niko.png" id="1_v5nbg"]
+[ext_resource type="Script" path="res://utils/spawn_hologram.gd" id="2_dxmeu"]
+
+[node name="SpawnPointHologram" type="Sprite2D"]
+modulate = Color(1, 1, 1, 0.509804)
+texture = ExtResource("1_v5nbg")
+offset = Vector2(0, -15)
+script = ExtResource("2_dxmeu")
