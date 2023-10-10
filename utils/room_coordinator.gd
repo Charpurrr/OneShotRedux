@@ -20,17 +20,23 @@ func upd_current_room(new_area : StringName, new_room : StringName, destination_
 	current_room = instantiated_room
 
 	if previous_room != null:
+		niko.set_collision_mask_value(1, false)
 		niko.can_move = false
 
 		await wm.transition.fade_out(previous_room)
+
 		call_deferred("add_child", instantiated_room)
-		niko.position = destination_pos
 		niko.reparent(instantiated_room)
+		niko.position = destination_pos
+
 		await wm.transition.fade_in(instantiated_room)
 
+		niko.set_collision_mask_value(1, true)
 		niko.can_move = true
 	else:
 		call_deferred("add_child", instantiated_room)
+
 		await instantiated_room.ready
+
 		niko.position = instantiated_room.room_spawn_point
 		niko.reparent(instantiated_room)

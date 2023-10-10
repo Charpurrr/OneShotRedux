@@ -35,12 +35,18 @@ func _physics_process(_delta):
 
 	match enter_type:
 		"input_based":
-			if Input.get_vector("left", "right", "up", "down") == warp_enter:
+			if check_input_based_satisfied(warp_enter):
 				should_activate = niko.is_on_wall()
 		"enter_based":
 			should_activate = true
 
 	if should_activate == true:
-		var destination_pos : Vector2 = niko_pos - enter_origin + exit_origin
+		var offset : Vector2 = niko_pos - enter_origin
+		var perp_offset : Vector2 = offset * warp_enter.orthogonal().abs()
+		var destination_pos : Vector2 = perp_offset + exit_origin
 
 		wm.room_coordinator.upd_current_room(destination_area, destination_room, destination_pos)
+
+
+func check_input_based_satisfied(enter_vector : Vector2):
+	return sign(Input.get_vector("left", "right", "up", "down").dot(enter_vector)) == 1

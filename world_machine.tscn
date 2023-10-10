@@ -22,7 +22,7 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-color = Color(0.0392157, 0, 0.0392157, 0)
+color = Color(0.0470588, 0.00392157, 0.0588235, 0)
 
 [node name="RoomCoordinator" type="Node2D" parent="."]
 z_as_relative = false
