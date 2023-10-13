@@ -8,6 +8,7 @@
 
 [node name="Bedroom" type="Node2D"]
 y_sort_enabled = true
+position = Vector2(232, 32)
 script = ExtResource("1_fs5pt")
 
 [node name="WitheredPlant" parent="." instance=ExtResource("4_kxnm5")]
@@ -28,8 +29,6 @@ layer_1/tile_data = PackedInt32Array(524290, 524289, 3, 458758, 589825, 2, 45875
 layer_0/tile_data = PackedInt32Array(458754, 0, 2)
 destination_area = "start_house"
 destination_room = "computer_hall"
-enter_origin = Vector2(40, 120)
-exit_origin = Vector2(264, 152)
 
 [node name="SpawnPointHologram" parent="Warps" instance=ExtResource("5_r4o0i")]
 position = Vector2(152, 72)

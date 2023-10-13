@@ -26,6 +26,7 @@ var can_move : bool = true
 
 
 func _physics_process(_delta):
+	print(facing_direction)
 	pause()
 	movement()
 	move_and_slide()
@@ -97,8 +98,8 @@ func set_animation():
 ## Set light occluders based on the input
 func set_occluder(signed_vector : Vector2):
 	if signed_vector != Vector2.ZERO:
-		occluder_v.visible = signed_vector.x != 0
-		occluder_h.visible = signed_vector.y != 0
+		occluder_v.visible = facing_direction == "left" or facing_direction == "right"
+		occluder_h.visible = facing_direction == "up" or facing_direction == "down"
 
 
 ## Open the pause menu

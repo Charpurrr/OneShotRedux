@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://cj4x48ba4v66k"]
 
-[ext_resource type="Texture2D" uid="uid://ckmssn2013cug" path="res://maps/warps/warps.png" id="1_f4vf5"]
+[ext_resource type="Texture2D" path="res://maps/graphics/warps.png" id="1_f4vf5"]
 [ext_resource type="Script" path="res://maps/warps/warp_tile.gd" id="2_hlknp"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_53gw4"]

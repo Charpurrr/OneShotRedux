@@ -17,6 +17,10 @@ extends TileMap
 @onready var niko : CharacterBody2D = wm.niko
 
 
+func _ready():
+	modulate.a = 0
+
+
 func _physics_process(_delta):
 	if wm.transition.is_transitioning: return
 
