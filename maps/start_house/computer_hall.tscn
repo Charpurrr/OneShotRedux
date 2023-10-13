@@ -106,6 +106,8 @@ destination_area = "start_house"
 layer_0/tile_data = PackedInt32Array(589840, 0, 3)
 destination_area = "start_house"
 destination_room = "bedroom"
+enter_origin = Vector2(264, 152)
+exit_origin = Vector2(40, 120)
 
 [node name="SpawnPointHologram" parent="Warps" instance=ExtResource("8_emvxu")]
 top_level = true
