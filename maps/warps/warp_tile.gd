@@ -49,8 +49,17 @@ func _physics_process(_delta):
 		var perp_offset : Vector2 = offset * warp_enter.orthogonal().abs()
 		var destination_pos : Vector2 = perp_offset + exit_origin
 
-		wm.room_coordinator.upd_current_room(destination_area, destination_room, destination_pos)
+		wm.room_coordinator.upd_current_room(destination_area, destination_room, warp_exit, destination_pos)
 
 
-func check_input_based_satisfied(enter_vector : Vector2):
-	return sign(Input.get_vector("left", "right", "up", "down").dot(enter_vector)) == 1
+func check_input_based_satisfied(enter_vector : Vector2) -> bool:
+	return (sign(Input.get_vector("left", "right", "up", "down").dot(enter_vector)) == 1 
+	and check_wall_colliding(enter_vector))
+
+
+func check_wall_colliding(enter_vector : Vector2) -> bool:
+	for i in niko.get_slide_collision_count():
+		if niko.get_slide_collision(i).get_normal().is_equal_approx(-enter_vector):
+			return true
+
+	return false

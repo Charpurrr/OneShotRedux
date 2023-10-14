@@ -16,7 +16,7 @@ var default_room : PackedScene = areas["start_house"].rooms["computer_hall"]
 
 
 func _ready():
-	room_coordinator.upd_current_room("start_house", "computer_hall", Vector2.ZERO)
+	room_coordinator.upd_current_room("start_house", "computer_hall", Vector2.DOWN)
 
 
 func _process(_delta):

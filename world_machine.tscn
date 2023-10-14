@@ -4,8 +4,8 @@
 [ext_resource type="PackedScene" uid="uid://cj81lcigmv75t" path="res://actors/niko/niko.tscn" id="2_3yced"]
 [ext_resource type="Script" path="res://utils/transition.gd" id="2_oymye"]
 [ext_resource type="Script" path="res://utils/room_coordinator.gd" id="3_axh51"]
-[ext_resource type="AudioStream" uid="uid://cf1iayc5t2642" path="res://music/phosphor.ogg" id="3_f2jln"]
 [ext_resource type="Script" path="res://actors/niko/camera.gd" id="3_vs8hw"]
+[ext_resource type="AudioStream" uid="uid://bkoufwplgohmn" path="res://music/someplaceiknow.ogg" id="6_psqtr"]
 
 [node name="WorldMachine" type="Node2D"]
 y_sort_enabled = true
@@ -41,5 +41,6 @@ zoom = Vector2(2, 2)
 script = ExtResource("3_vs8hw")
 
 [node name="BGM" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("3_f2jln")
+stream = ExtResource("6_psqtr")
 volume_db = -10.0
+autoplay = true

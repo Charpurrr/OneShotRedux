@@ -16,4 +16,3 @@ extends Node2D
 @export_range(0, 10, 1, "or_greater") var lim_b : int
 
 @onready var sp_hologram : Sprite2D = $Warps/SpawnPointHologram
-@onready var room_spawn_point : Vector2 = sp_hologram.position

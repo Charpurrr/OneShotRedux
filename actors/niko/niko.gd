@@ -5,6 +5,7 @@ extends CharacterBody2D
 
 @onready var doll : AnimatedSprite2D = $Doll
 
+@onready var collision : CollisionShape2D = $CollisionShape2D
 @onready var interact_ray : RayCast2D = $InteractRay
 
 @onready var occluder_h : LightOccluder2D = $LightOccluderHorizontal
@@ -26,10 +27,13 @@ var can_move : bool = true
 
 
 func _physics_process(_delta):
-	print(facing_direction)
 	pause()
 	movement()
 	move_and_slide()
+
+	for collide in get_slide_collision_count():
+		print(get_slide_collision(collide).get_normal())
+
 	set_animation()
 
 	if can_move == true:
@@ -63,9 +67,14 @@ func set_facing(): # IMPROPER UPDATES TO INTERACT RAY (03/10)
 			facing_vector.y = 0
 
 		if facing_vector != Vector2.ZERO:
-			facing_direction = get_direction_str(facing_vector)
+			upd_facing_direction(facing_vector)
 
 		interact_ray.target_position = facing_vector * Vector2(8.5, 5)
+
+
+## Update Niko's facing_direction
+func upd_facing_direction(new_vector : Vector2):
+	facing_direction = get_direction_str(new_vector)
 
 
 ## Get the directional string associated with vector
