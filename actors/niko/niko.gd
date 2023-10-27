@@ -29,10 +29,9 @@ var can_move : bool = true
 func _physics_process(_delta):
 	pause()
 	movement()
+	print(velocity)
 	move_and_slide()
-
-	for collide in get_slide_collision_count():
-		print(get_slide_collision(collide).get_normal())
+	print(velocity)
 
 	set_animation()
 

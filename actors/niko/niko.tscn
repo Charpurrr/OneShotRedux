@@ -206,7 +206,7 @@ process_mode = 1
 texture_filter = 1
 collision_layer = 3
 motion_mode = 1
-wall_min_slide_angle = 0.0
+floor_max_angle = 0.872665
 script = ExtResource("1_jnit1")
 
 [node name="Doll" type="AnimatedSprite2D" parent="."]
