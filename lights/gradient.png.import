@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bb6ch8f24ou11"
-path="res://.godot/imported/pain_test.png-43c1714a2291d3f694e9c4c28b99c4e7.ctex"
+path="res://.godot/imported/gradient.png-4f9dd3052a550a3db8d975c60f164c28.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://actors/objects/graphics/pain_test.png"
-dest_files=["res://.godot/imported/pain_test.png-43c1714a2291d3f694e9c4c28b99c4e7.ctex"]
+source_file="res://lights/gradient.png"
+dest_files=["res://.godot/imported/gradient.png-4f9dd3052a550a3db8d975c60f164c28.ctex"]
 
 [params]
 

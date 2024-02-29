@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://c615j14yimai"]
 
 [ext_resource type="Texture2D" uid="uid://lxutel8txmuj" path="res://actors/objects/graphics/start_window.png" id="1_k673h"]
-[ext_resource type="Texture2D" uid="uid://bb6ch8f24ou11" path="res://actors/objects/graphics/pain_test.png" id="2_cgerk"]
+[ext_resource type="Texture2D" uid="uid://bb6ch8f24ou11" path="res://lights/gradient.png" id="2_ep3bj"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8ubnj"]
 atlas = ExtResource("1_k673h")
@@ -75,7 +75,7 @@ scale = Vector2(16.625, 13.75)
 color = Color(0.160784, 0.054902, 0.560784, 1)
 energy = 2.5
 shadow_enabled = true
-texture = ExtResource("2_cgerk")
+texture = ExtResource("2_ep3bj")
 offset = Vector2(0, 5)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="PointLight2D"]
