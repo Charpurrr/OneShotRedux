@@ -1,6 +1,6 @@
 class_name WorldMachine
 extends Node2D
-# Handles loading and interacting with the game world
+## Handles loading and interacting with the game world.
 
 
 @onready var room_coordinator : Node2D = $RoomCoordinator

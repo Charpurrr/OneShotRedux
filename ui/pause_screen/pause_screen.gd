@@ -1,8 +1,8 @@
 class_name PauseMenu
 extends CanvasLayer
-# Class for the pause menu
+## Class for the pause menu.
 
 
-func _process(_delta):
-	if Input.is_action_just_pressed("pause"):
+func _input(event):
+	if event == &"pause":
 		queue_free()

@@ -1,6 +1,6 @@
 class_name Camera
 extends Camera2D
-# Controling and managing the camera
+## Controling and managing the camera.
 
 @onready var wm : Node2D = owner
 
@@ -12,9 +12,9 @@ func _ready():
 
 	current_room = wm.room_coordinator.current_room
 
-	set_limits()
+	_set_limits()
 
 
-## Set the camera limits depending on current_room
-func set_limits():
+## Set the camera limits depending on current_room.
+func _set_limits():
 	current_room = wm.room_coordinator.current_room

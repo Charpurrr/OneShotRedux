@@ -2,6 +2,7 @@ class_name CombiningFeature
 extends CanvasLayer
 # Class for combining items in the inventory
 
+
 @onready var item1 = $HBoxContainer/VBoxContainer/Item1
 @onready var item2 = $HBoxContainer/VBoxContainer/Item2
 @onready var item3 = $HBoxContainer/VBoxContainer/Item3
@@ -12,6 +13,7 @@ extends CanvasLayer
 
 var selected : Array
 
+
 func _ready():
 	populate_inventory()
 	item1.connect("button_down", add_selectable.bind(item1.text))
@@ -20,7 +22,8 @@ func _ready():
 	item4.connect("button_down", add_selectable.bind(item4.text))
 	item5.connect("button_down", add_selectable.bind(item5.text))
 	item6.connect("button_down", add_selectable.bind(item6.text))
-	
+
+
 func _process(delta):
 	for i in Items.items: #searches the items dictionary
 		if sort_array(selected) == sort_array(Items.items[i]): #if the selected array equals one of the values for a key in dictionary (sorted so that order is irrelevant)
@@ -35,7 +38,7 @@ func _process(delta):
 			
 	if selected.size() == 2:
 		selected = []
-			
+
 
 func populate_inventory():
 	var i = 0
@@ -43,10 +46,12 @@ func populate_inventory():
 		if i < 6:
 			t.text = Items.inv[i] #replace the text with the value of index of inventory
 			i += 1 #add 1 to index to go to the next value
-			
+
+
 func sort_array(array : Array):
 	array.sort()
 	return array
+
 
 func add_selectable(item):
 	selected.append(item)

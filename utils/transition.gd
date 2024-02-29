@@ -1,6 +1,6 @@
 class_name TransitionEffect
 extends CanvasLayer
-# Handles the visual transitions between rooms
+## Handles the visual transitions between rooms.
 
 
 @onready var niko : CharacterBody2D = %Niko

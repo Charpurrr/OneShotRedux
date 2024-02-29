@@ -1,6 +1,6 @@
 class_name Niko
 extends CharacterBody2D
-# Player class for Niko
+## Player class for Niko.
 
 
 @onready var doll : AnimatedSprite2D = $Doll
@@ -16,25 +16,25 @@ const PAUSE_MENU : PackedScene = preload("res://ui/pause_screen/pause_screen.tsc
 const RUN_SPEED : int = 100
 const SPEED : int = 50
 
-var facing_direction : StringName = "down" # Direction Niko is facing (string)
-var facing_vector : Vector2 = Vector2.ZERO # Direction Niko is facing (Vector2)
+## Direction Niko is facing (string).
+var facing_direction : StringName = "down"
+## Direction Niko is facing (Vector2).
+var facing_vector : Vector2 = Vector2.ZERO
 
-var input_vector : Vector2 # Current directional input's vector
+## Current directional input's vector.
+var input_vector : Vector2
 
-var warped : bool # Check if Niko has recently warped
+## Check if Niko has recently warped.
+var warped : bool
 
 var can_move : bool = true
 
 
 func _physics_process(_delta):
-	pause()
-	movement()
 	move_and_slide()
-
-	for collide in get_slide_collision_count():
-		print(get_slide_collision(collide).get_normal())
-
-	set_animation()
+	_set_animation()
+	_movement()
+	_pause()
 
 	if can_move == true:
 		input_vector = Input.get_vector("left", "right", "up", "down")
@@ -42,9 +42,9 @@ func _physics_process(_delta):
 		input_vector = Vector2(0, 0)
 
 
-## Handles movement
-func movement():
-	set_facing()
+## Handles movement.
+func _movement():
+	_set_facing()
 
 	if not Input.is_action_pressed("run"):
 		doll.speed_scale = 1
@@ -54,11 +54,11 @@ func movement():
 		velocity = input_vector * RUN_SPEED
 
 
-## Set facing_direction depending on the input
-func set_facing(): # IMPROPER UPDATES TO INTERACT RAY (03/10)
+## Set facing_direction depending on the input.
+func _set_facing():
 	var signed_vector : Vector2 = sign(input_vector)
 
-	set_occluder(signed_vector)
+	_set_occluder(signed_vector)
 
 	if signed_vector.dot(facing_vector) <= 0:
 		facing_vector = signed_vector
@@ -72,13 +72,8 @@ func set_facing(): # IMPROPER UPDATES TO INTERACT RAY (03/10)
 		interact_ray.target_position = facing_vector * Vector2(8.5, 5)
 
 
-## Update Niko's facing_direction
-func upd_facing_direction(new_vector : Vector2):
-	facing_direction = get_direction_str(new_vector)
-
-
-## Get the directional string associated with vector
-func get_direction_str(vector : Vector2) -> String:
+## Get the directional string associated with vector.
+func _get_direction_str(vector : Vector2) -> String:
 	match vector:
 		Vector2.DOWN:
 			return "down"
@@ -92,8 +87,8 @@ func get_direction_str(vector : Vector2) -> String:
 			return ""
 
 
-## Apply the correct animations to Niko
-func set_animation():
+## Apply the correct animations to Niko.
+func _set_animation():
 	var previous_frame = doll.frame
 	var previous_frame_progress = doll.frame_progress
 
@@ -104,14 +99,19 @@ func set_animation():
 		doll.play("walk_" + facing_direction)
 
 
-## Set light occluders based on the input
-func set_occluder(signed_vector : Vector2):
+## Set light occluders based on the input.
+func _set_occluder(signed_vector : Vector2):
 	if signed_vector != Vector2.ZERO:
 		occluder_v.visible = facing_direction == "left" or facing_direction == "right"
 		occluder_h.visible = facing_direction == "up" or facing_direction == "down"
 
 
-## Open the pause menu
-func pause():
+## Open the pause menu.
+func _pause():
 	if Input.is_action_just_pressed("pause"):
 		add_child(PAUSE_MENU.instantiate())
+
+
+## Update Niko's facing_direction.
+func upd_facing_direction(new_vector : Vector2):
+	facing_direction = _get_direction_str(new_vector)
