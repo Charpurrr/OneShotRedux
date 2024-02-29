@@ -1,6 +1,6 @@
 class_name RoomCoordinator
 extends Node2D
-# Handles loading and transitioning between rooms and areas
+## Handles loading and transitioning between rooms and areas.
 
 
 @onready var wm : Node2D = owner
@@ -12,24 +12,8 @@ var current_room : Node2D = null
 var destination : int = 0
 
 
-## Transitions and updates to a new room
-func upd_current_room(
-	new_area : StringName, new_room : StringName, 
-	exit_facing : Vector2, destination_pos := Vector2.ZERO
-):
-	var instantiated_room : Node2D = wm.areas[new_area].rooms[new_room].instantiate()
-	var previous_room : Node2D = current_room
-
-	current_room = instantiated_room
-
-	if previous_room != null:
-		transition_upd(instantiated_room, previous_room, destination_pos, exit_facing)
-	else:
-		sudden_upd(instantiated_room)
-
-
-## Update room by utilising transitions
-func transition_upd(new_room : Node2D, previous_room : Node2D, 
+## Update room by utilising transitions.
+func _transition_upd(new_room : Node2D, previous_room : Node2D, 
 destination_pos : Vector2, exit_facing : Vector2
 ):
 	niko.set_collision_mask_value(1, false)
@@ -49,8 +33,8 @@ destination_pos : Vector2, exit_facing : Vector2
 	niko.can_move = true
 
 
-## Update room by utilising its spawn point
-func sudden_upd(new_room : Node2D):
+## Update room by utilising its spawn point.
+func _sudden_upd(new_room : Node2D):
 	call_deferred("add_child", new_room)
 
 	await new_room.ready
@@ -61,3 +45,19 @@ func sudden_upd(new_room : Node2D):
 	niko.position = room_sp.position
 
 	niko.reparent(new_room)
+
+
+## Transitions and updates to a new room.
+func upd_current_room(
+	new_area : StringName, new_room : StringName, 
+	exit_facing : Vector2, destination_pos := Vector2.ZERO
+):
+	var instantiated_room : Node2D = wm.areas[new_area].rooms[new_room].instantiate()
+	var previous_room : Node2D = current_room
+
+	current_room = instantiated_room
+
+	if previous_room != null:
+		_transition_upd(instantiated_room, previous_room, destination_pos, exit_facing)
+	else:
+		_sudden_upd(instantiated_room)

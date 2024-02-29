@@ -43,4 +43,4 @@ script = ExtResource("3_vs8hw")
 [node name="BGM" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_psqtr")
 volume_db = -10.0
-autoplay = true
+pitch_scale = 0.7

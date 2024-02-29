@@ -1,6 +1,6 @@
 class_name RoomInfo
 extends Node2D
-# Class for storing room data
+## Class for storing room data.
 
 
 ## Audio track for this room
