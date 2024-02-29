@@ -4,7 +4,7 @@ extends Sprite2D
 
 
 ## What direction Niko should face after spawning here.
-@export var spawn_facing := Vector2.DOWN
+@export var spawn_facing:= Vector2.DOWN
 
 
 func _ready():

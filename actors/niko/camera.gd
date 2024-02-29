@@ -2,13 +2,13 @@ class_name Camera
 extends Camera2D
 ## Controling and managing the camera.
 
-@onready var wm : Node2D = owner
+@onready var wm: Node2D = owner
 
-var current_room : Node2D
+var current_room: Node2D
 
 
 func _ready():
-	await(wm.ready)
+	await wm.ready
 
 	current_room = wm.room_coordinator.current_room
 

@@ -3,31 +3,33 @@ extends CharacterBody2D
 ## Player class for Niko.
 
 
-@onready var doll : AnimatedSprite2D = $Doll
+@onready var wm: WorldMachine = owner
 
-@onready var collision : CollisionShape2D = $CollisionShape2D
-@onready var interact_ray : RayCast2D = $InteractRay
+@onready var doll: AnimatedSprite2D = $Doll
 
-@onready var occluder_h : LightOccluder2D = $LightOccluderHorizontal
-@onready var occluder_v : LightOccluder2D = $LightOccluderVertical
+@onready var collision: CollisionShape2D = $CollisionShape2D
+@onready var interact_ray: RayCast2D = $InteractRay
 
-const PAUSE_MENU : PackedScene = preload("res://ui/pause_screen/pause_screen.tscn")
+@onready var occluder_h: LightOccluder2D = $LightOccluderHorizontal
+@onready var occluder_v: LightOccluder2D = $LightOccluderVertical
 
-const RUN_SPEED : int = 100
-const SPEED : int = 50
+const PAUSE_MENU: PackedScene = preload("res://ui/pause_screen/pause_screen.tscn")
+
+const RUN_SPEED: int = 100
+const SPEED: int = 50
 
 ## Direction Niko is facing (string).
-var facing_direction : StringName = "down"
+var facing_direction: StringName = "down"
 ## Direction Niko is facing (Vector2).
-var facing_vector : Vector2 = Vector2.ZERO
+var facing_vector: Vector2 = Vector2.ZERO
 
 ## Current directional input's vector.
-var input_vector : Vector2
+var input_vector: Vector2
 
 ## Check if Niko has recently warped.
-var warped : bool
+var warped: bool
 
-var can_move : bool = true
+var can_move: bool = true
 
 
 func _physics_process(_delta):
@@ -56,7 +58,7 @@ func _movement():
 
 ## Set facing_direction depending on the input.
 func _set_facing():
-	var signed_vector : Vector2 = sign(input_vector)
+	var signed_vector: Vector2 = sign(input_vector)
 
 	_set_occluder(signed_vector)
 
@@ -69,11 +71,11 @@ func _set_facing():
 		if facing_vector != Vector2.ZERO:
 			upd_facing_direction(facing_vector)
 
-		interact_ray.target_position = facing_vector * Vector2(8.5, 5)
+			interact_ray.target_position = facing_vector * Vector2(8.5, 5)
 
 
 ## Get the directional string associated with vector.
-func _get_direction_str(vector : Vector2) -> String:
+func _get_direction_str(vector: Vector2) -> String:
 	match vector:
 		Vector2.DOWN:
 			return "down"
@@ -100,7 +102,7 @@ func _set_animation():
 
 
 ## Set light occluders based on the input.
-func _set_occluder(signed_vector : Vector2):
+func _set_occluder(signed_vector: Vector2):
 	if signed_vector != Vector2.ZERO:
 		occluder_v.visible = facing_direction == "left" or facing_direction == "right"
 		occluder_h.visible = facing_direction == "up" or facing_direction == "down"
@@ -113,5 +115,5 @@ func _pause():
 
 
 ## Update Niko's facing_direction.
-func upd_facing_direction(new_vector : Vector2):
+func upd_facing_direction(new_vector: Vector2):
 	facing_direction = _get_direction_str(new_vector)

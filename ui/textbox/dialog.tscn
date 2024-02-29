@@ -1,0 +1,90 @@
+[gd_scene load_steps=12 format=3 uid="uid://br4ywc86kojx0"]
+
+[ext_resource type="Script" path="res://ui/textbox/dialog.gd" id="1_53xd4"]
+[ext_resource type="Texture2D" uid="uid://bwaahf76lhuyo" path="res://ui/textbox/dialogue_box.png" id="3_suh8r"]
+[ext_resource type="Texture2D" uid="uid://dntkqbmkbqwdq" path="res://ui/textbox/chara_icons.png" id="4_e0s8q"]
+[ext_resource type="Texture2D" uid="uid://c620mbnwjkjnf" path="res://ui/textbox/placeholder_2.png" id="5_202p3"]
+[ext_resource type="FontFile" uid="uid://dllequbm0tu6k" path="res://ui/determination.ttf" id="6_ykon2"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ssym2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_suh8r")
+}],
+"loop": false,
+"name": &"niko",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yq5bo"]
+atlas = ExtResource("4_e0s8q")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hqo14"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yq5bo")
+}],
+"loop": false,
+"name": &"niko",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_lt17b"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_202p3")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="LabelSettings" id="LabelSettings_c784r"]
+font = ExtResource("6_ykon2")
+
+[sub_resource type="LabelSettings" id="LabelSettings_f5x8e"]
+font = ExtResource("6_ykon2")
+
+[node name="DialogBox" type="CanvasLayer"]
+script = ExtResource("1_53xd4")
+
+[node name="Base" type="AnimatedSprite2D" parent="."]
+position = Vector2(298, 390)
+sprite_frames = SubResource("SpriteFrames_ssym2")
+animation = &"niko"
+
+[node name="Icon" type="AnimatedSprite2D" parent="."]
+position = Vector2(86, 353)
+sprite_frames = SubResource("SpriteFrames_hqo14")
+animation = &"niko"
+
+[node name="Portrait" type="AnimatedSprite2D" parent="."]
+position = Vector2(450, 367)
+sprite_frames = SubResource("SpriteFrames_lt17b")
+centered = false
+
+[node name="Speaker" type="Label" parent="."]
+offset_left = 96.0
+offset_top = 344.0
+offset_right = 300.0
+offset_bottom = 361.0
+text = "niko.EXE"
+label_settings = SubResource("LabelSettings_c784r")
+
+[node name="Text" type="Label" parent="."]
+offset_left = 87.0
+offset_top = 369.0
+offset_right = 443.0
+offset_bottom = 440.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.0666667)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+text = "lorem stuff hahahaha whats good my name is 
+darge plagueis the wise i dont like \"gay\" 
+people"
+label_settings = SubResource("LabelSettings_f5x8e")
+autowrap_mode = 1
+visible_ratio = -0.0107527

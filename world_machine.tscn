@@ -5,7 +5,7 @@
 [ext_resource type="Script" path="res://utils/transition.gd" id="2_oymye"]
 [ext_resource type="Script" path="res://utils/room_coordinator.gd" id="3_axh51"]
 [ext_resource type="Script" path="res://actors/niko/camera.gd" id="3_vs8hw"]
-[ext_resource type="AudioStream" uid="uid://bkoufwplgohmn" path="res://music/someplaceiknow.ogg" id="6_psqtr"]
+[ext_resource type="AudioStream" uid="uid://bkoufwplgohmn" path="res://sound/music/someplaceiknow.ogg" id="6_psqtr"]
 
 [node name="WorldMachine" type="Node2D"]
 y_sort_enabled = true
@@ -23,6 +23,8 @@ grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 color = Color(0.0470588, 0.00392157, 0.0588235, 0)
+
+[node name="UI" type="CanvasLayer" parent="."]
 
 [node name="RoomCoordinator" type="Node2D" parent="."]
 z_as_relative = false

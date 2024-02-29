@@ -11,7 +11,7 @@ extends CanvasLayer
 @onready var item6 = $HBoxContainer/VBoxContainer2/Item6
 @onready var buttons = [item1, item2, item3, item4, item5, item6]
 
-var selected : Array
+var selected: Array
 
 
 func _ready():
@@ -48,7 +48,7 @@ func populate_inventory():
 			i += 1 #add 1 to index to go to the next value
 
 
-func sort_array(array : Array):
+func sort_array(array: Array):
 	array.sort()
 	return array
 

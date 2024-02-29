@@ -1,11 +1,11 @@
 extends Node2D
 
-var items : Dictionary = {
+var items: Dictionary = {
 	"Based": ["Battery", "Sun"],
 	"Test3": ["Test1", "Test2"],
 	}
 	
-var inv : Array = [
+var inv: Array = [
 	"Battery",
 	"Sun",
 	"Test1",

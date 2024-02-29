@@ -3,14 +3,14 @@ extends CanvasLayer
 ## Handles the visual transitions between rooms.
 
 
-@onready var niko : CharacterBody2D = %Niko
+@onready var niko: CharacterBody2D = %Niko
 
-@onready var color_rect : ColorRect = $ColorRect
+@onready var color_rect: ColorRect = $ColorRect
 
-var is_transitioning : bool = false
+var is_transitioning: bool = false
 
 
-func fade_out(previous_room : Node2D):
+func fade_out(previous_room: Node2D):
 	is_transitioning = true
 
 	var tween = create_tween()
@@ -20,7 +20,7 @@ func fade_out(previous_room : Node2D):
 	previous_room.queue_free()
 
 
-func fade_in(new_room : Node2D):
+func fade_in(new_room: Node2D):
 	await new_room.ready
 
 	var tween = create_tween()
