@@ -12,7 +12,9 @@ var dialog_box_scene: PackedScene = preload("res://ui/textbox/dialog.tscn")
 func _process(_delta):
 	context.visible = is_colliding()
 
-	if not is_colliding() or niko.in_dialogue == true:
+
+func _input(_event):
+	if niko.in_dialogue == true or not is_colliding():
 		return
 
 	if Input.is_action_just_pressed(&"interact"):

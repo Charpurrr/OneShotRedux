@@ -13,7 +13,7 @@ extends TileMap
 ## Coordinations of exit point.
 @export var exit_origin: Vector2
 
-@onready var wm: Node2D = $/root/WorldMachine
+@onready var wm: WorldMachine = $/root/WorldMachine
 @onready var niko: CharacterBody2D = wm.niko
 
 

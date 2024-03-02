@@ -47,12 +47,17 @@ position = Vector2(152, 112)
 
 [node name="Bookshelf" parent="." instance=ExtResource("3_0wbow")]
 position = Vector2(192, 120)
-text = null
+text = "[chr(nik_neutral)]
+hell o 
+[chr(nik_silly)]
+hi 
+[new]
+[chr(niko_neutral)]
+im so happy to see u"
 
 [node name="Bookshelf2" parent="." instance=ExtResource("3_0wbow")]
 position = Vector2(112, 120)
 flip_h = true
-text = null
 
 [node name="Window" parent="." instance=ExtResource("5_y22u4")]
 position = Vector2(152, 56)
