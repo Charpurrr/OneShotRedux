@@ -14,8 +14,7 @@ func _process(_delta):
 
 
 func _input(_event):
-	if niko.in_dialogue == true or not is_colliding():
-		return
+	if niko.in_dialogue == true or not is_colliding(): return
 
 	if Input.is_action_just_pressed(&"interact"):
 		var dialog_box: Node = dialog_box_scene.instantiate()
