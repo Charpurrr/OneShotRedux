@@ -11,8 +11,7 @@ texture_filter = 1
 texture = ExtResource("1_4jgsb")
 offset = Vector2(0, -24)
 script = ExtResource("2_2q88n")
-text = "I saw Jerma at the grocery store yesterday.
-I told him how cool it was to meet him in person, but I didn’t want to be a douche and"
+text = "hell o hi im so \\n happy to see u"
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 collision_layer = 257
