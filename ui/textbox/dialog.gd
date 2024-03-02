@@ -1,6 +1,16 @@
 class_name Dialog
 extends CanvasLayer
-## Character dialogue.
+## Character dialogue.[br]
+## You can call for a new dialog prompt with « [new] »,[br]
+## [i]This queues a second dialog prompt that continues the inputed text[/i][br]
+## a character portait with « [chr(animation: StringName)] »,[br]
+## [i]This sets a character portrait graphic whenever read: [u]you can change expressions
+## while text is still being written.[/u][/i][br]
+## and set text speed with « [spd(new_speed: int)] »[br]
+## [i]This makes characters appear at the rate of new_speed.[/i][br][br]
+## EXAMPLE: [br][br][i]
+##[spd(3)][chr(nik_neutral)] This is the first dialog prompt with a text speed of 3fps and a neutral character portrait of Niko. 
+## [new][spd(6)][chr(niko_silly)] This is the second dialog prompt with a text speed of 6fps and a silly character portrait of Niko.
 
 
 @onready var prog_graphic: AnimatedSprite2D = $Progress
@@ -61,20 +71,15 @@ func _ticking_sfx():
 		sfx_timer = SFX_TIME
 
 
-## Handles dialogue progression.[br]
-## [i] NEW DIALOG PROMPT CALLED IN TEXT EDIT WITH: « \new »[br][br]
-## EXAMPLE: « "Hello! \new Hi!" »[br]
-## OUTPUT: Dialog prompt 1: "Hello!", dialog prompt 2: "Hi!"
+## Handles dialogue progression.
 func _text_progress():
 	can_progress = text_label.visible_characters == text.length()
 	prog_graphic.visible = can_progress
 
-	if not can_progress:
-		return
-
-	if Input.is_action_just_pressed(&"interact"):
-		#prog_graphic.play(&"pressed")
+	if can_progress and Input.is_action_just_pressed(&"interact"):
 		text_label.visible_characters = 0
-	#elif Input.is_action_just_released(&"interact"):
-	#else:
-		#prog_graphic.play(&"unpressed")
+
+
+func _apply_tags():
+	var regex:= RegEx.new()
+	regex.search_all(r'')

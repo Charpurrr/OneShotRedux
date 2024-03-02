@@ -29,6 +29,7 @@ var input_vector: Vector2
 ## Check if Niko has recently warped.
 var warped: bool
 
+var in_dialogue: bool = false
 var can_move: bool = true
 
 
