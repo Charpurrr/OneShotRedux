@@ -125,4 +125,5 @@ people"
 label_settings = SubResource("LabelSettings_f5x8e")
 autowrap_mode = 2
 text_overrun_behavior = 2
-visible_ratio = -0.0107527
+visible_characters = 0
+visible_ratio = 0.0

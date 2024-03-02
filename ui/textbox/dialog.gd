@@ -46,7 +46,7 @@ func _process(_delta):
 func _characters_appear():
 	read_timer = max(read_timer - 1, 0)
 
-	if read_timer == 0:
+	if read_timer == 0 and text_label.visible_characters != text.length():
 		text_label.visible_characters += 1
 		read_timer = speed
 
