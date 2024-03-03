@@ -20,7 +20,9 @@ func _input(_event):
 		var dialog_box: Node = dialog_box_scene.instantiate()
 		var collider: InteractableObject = get_collider().get_parent()
 
+		dialog_box.speaker = collider.speaker
 		dialog_box.text = collider.text
+
 		niko.in_dialogue = true
 		niko.can_move = false
 

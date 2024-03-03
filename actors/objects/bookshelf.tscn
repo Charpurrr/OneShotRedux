@@ -11,6 +11,7 @@ texture_filter = 1
 texture = ExtResource("1_4jgsb")
 offset = Vector2(0, -24)
 script = ExtResource("2_2q88n")
+speaker = &"niko"
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 collision_layer = 257

@@ -5,3 +5,5 @@ extends Node2D
 
 
 @export_multiline var text: String
+## What character is saying this?
+@export var speaker: StringName

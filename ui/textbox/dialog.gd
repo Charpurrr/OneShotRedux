@@ -14,8 +14,11 @@ extends CanvasLayer
 @onready var wm: WorldMachine = $/root/WorldMachine
 
 @onready var prog_graphic: AnimatedSprite2D = $Progress
-@onready var portrait: AnimatedSprite2D = $Portrait
 @onready var text_label: Label = $Text
+
+@onready var portrait: AnimatedSprite2D = $Portrait
+@onready var speaker_label: Label = $Speaker
+@onready var icon: AnimatedSprite2D = $Icon
 
 ## Time between the ticking sound effects.
 @export var sfx_time: int = 5
@@ -36,14 +39,19 @@ var text_array: PackedStringArray
 ## What line of the input text is being handled. (From zero)
 var line_pos: int = 0
 
-#region INPUT VARIABLES, THESE ARE SET BY THE DIALOG CALLER.
-var text: String
-## Time (in frames) between characters.
+## Rate at which characters appear.
 var speed: int = 2
+
+#region INPUT VARIABLES, THESE ARE SET BY THE COLLIDER.
+var speaker: StringName
+var text: String
 #endregion
 
 
 func _ready():
+	speaker_label.text = speaker + ".EXE"
+	icon.animation = speaker
+
 	text_label.visible_characters = 0
 	text_array = text.split("\n")
 
@@ -126,6 +134,9 @@ func _ticking_sfx():
 ## Handles dialogue progression.
 func _text_progress():
 	prog_graphic.visible = can_continue
+
+	if prog_graphic.visible == false:
+		prog_graphic.frame = 0
 
 	if can_continue and Input.is_action_just_pressed(&"interact"):
 		if line_pos == text_array.size() - 1:

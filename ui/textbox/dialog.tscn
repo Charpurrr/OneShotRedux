@@ -32,6 +32,11 @@ animations = [{
 "loop": false,
 "name": &"niko",
 "speed": 5.0
+}, {
+"frames": [],
+"loop": false,
+"name": &"none",
+"speed": 5.0
 }]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_v4tal"]
@@ -62,31 +67,26 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_wd6ir"]
-atlas = ExtResource("5_yjhab")
-region = Rect2(9, 0, 9, 8)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_xebfe"]
 atlas = ExtResource("5_yjhab")
 region = Rect2(0, 0, 9, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qpfvc"]
+atlas = ExtResource("5_yjhab")
+region = Rect2(9, 0, 9, 8)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_mgs5u"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_wd6ir")
-}],
-"loop": true,
-"name": &"pressed",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
 "texture": SubResource("AtlasTexture_xebfe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qpfvc")
 }],
 "loop": true,
-"name": &"unpressed",
-"speed": 5.0
+"name": &"press",
+"speed": 2.0
 }]
 
 [sub_resource type="LabelSettings" id="LabelSettings_c784r"]
@@ -106,7 +106,7 @@ animation = &"niko"
 [node name="Icon" type="AnimatedSprite2D" parent="."]
 position = Vector2(86, 353)
 sprite_frames = SubResource("SpriteFrames_hqo14")
-animation = &"niko"
+animation = &"none"
 
 [node name="Portrait" type="AnimatedSprite2D" parent="."]
 position = Vector2(450, 367)
@@ -115,17 +115,17 @@ animation = &"none"
 centered = false
 
 [node name="Progress" type="AnimatedSprite2D" parent="."]
-visible = false
 position = Vector2(298, 430)
 sprite_frames = SubResource("SpriteFrames_mgs5u")
-animation = &"unpressed"
+animation = &"press"
+autoplay = "press"
+frame_progress = 0.56134
 
 [node name="Speaker" type="Label" parent="."]
 offset_left = 96.0
 offset_top = 344.0
 offset_right = 300.0
 offset_bottom = 361.0
-text = "niko.EXE"
 label_settings = SubResource("LabelSettings_c784r")
 
 [node name="Text" type="Label" parent="."]
@@ -139,5 +139,4 @@ text = "somethin broke if ur seein this :I"
 label_settings = SubResource("LabelSettings_f5x8e")
 autowrap_mode = 2
 text_overrun_behavior = 2
-visible_characters = 0
-visible_ratio = 0.0
+visible_ratio = -0.0294118
