@@ -30,21 +30,28 @@ var sfx: AudioStreamWAV = preload("res://sound/sfx/text_tick.wav")
 var read_timer: int = 0
 
 ## Whether or not the next line can start being handled.
-var can_progress: bool = false
+var can_next_line: bool = true
 ## Whether or not the next dialog box can be prompted.
-var can_continue: bool = false
+var can_next_box: bool = false
 
-var text_array: PackedStringArray
+## Array for the every newline in the dialogue input variable.
+var dialogue_array: PackedStringArray
 
 ## What line of the input text is being handled. (From zero)
 var line_pos: int = 0
 
-## Rate at which characters appear.
+## How fast characters appear. 
+## (Only set this through tags, unless you want to change the default value.)
 var speed: int = 2
+
+## How long to delay text for.
+## ## (Only set this through tags.)
+var pause_time: int
+var pause_timer: int
 
 #region INPUT VARIABLES, THESE ARE SET BY THE COLLIDER.
 var speaker: StringName
-var text: String
+var dialogue: String
 #endregion
 
 
@@ -53,29 +60,43 @@ func _ready():
 	icon.animation = speaker
 
 	text_label.visible_characters = 0
-	text_array = text.split("\n")
+	dialogue_array = dialogue.split("\n")
 
 
 func _process(_delta):
+	print(dialogue_array.size())
+
 	_text_progress()
-	_apply_tags()
 
-	text_label.text = text_array[line_pos]
+	pause_timer = max(pause_timer - 1, 0)
+	read_timer = max(read_timer - 1, 0)
 
-	if can_continue: return
+	if Input.is_action_just_pressed(&"interact") and not can_next_box:
+		text_label.visible_characters = text_label.text.length()
+		pause_timer = 0
 
-	if can_progress:
-		line_pos = min(line_pos + 1, text_array.size() - 1)
+	if can_next_line: 
+		handle_nextl()
 
-		can_progress = false
+	if can_next_box or pause_timer != 0: 
+		return
+
+	can_next_line = text_label.visible_characters == text_label.text.length()
+	can_next_box = line_pos == dialogue_array.size()
 
 	_characters_appear()
 	_ticking_sfx()
 
 
-func _input(_event):
-	if Input.is_action_just_pressed(&"interact") and not can_continue:
-		text_label.visible_characters = text_array[line_pos].length()
+## Logic for processing and handling the next line in the dialogue.
+func handle_nextl():
+	_apply_tags()
+
+	text_label.text = text_label.text + dialogue_array[line_pos]
+
+	line_pos = min(line_pos + 1, dialogue_array.size())
+
+	can_next_line = false
 
 
 ## Apply the tags if there are any. See class documentation for elaborated info on tags.
@@ -83,7 +104,7 @@ func _apply_tags():
 	var regex_tag:= RegEx.new()
 	regex_tag.compile(r'^\[(.*)\]$') # Regex for the brackets (group 0) and its content (group 1).
 
-	var tag: RegExMatch = regex_tag.search(text_array[line_pos])
+	var tag: RegExMatch = regex_tag.search(dialogue_array[line_pos])
 
 	if tag == null: return
 
@@ -98,25 +119,32 @@ func _apply_tags():
 		_tag_chr(val.get_string(1))
 	elif tag_str.begins_with("spd"):
 		_tag_spd(int(val.get_string(1)))
+	elif tag_str.begins_with("pau"):
+		_tag_pau(int(val.get_string(1)))
+
+	dialogue_array.remove_at(line_pos)
 
 
 ## Apply the character portrait tag.
 func _tag_chr(animation: StringName):
 	portrait.play(animation)
-	text_array.remove_at(line_pos)
 
 
 ## Apply the read speed tag.
 func _tag_spd(new_speed: int):
 	speed = new_speed
-	text_array.remove_at(line_pos)
+
+
+## Apply the pause (or delay) tag.
+func _tag_pau(time: int):
+	pause_time = time
+
+	pause_timer = pause_time
 
 
 ## Handles appearing character logic.
 func _characters_appear():
-	read_timer = max(read_timer - 1, 0)
-
-	if read_timer == 0 and text_label.visible_characters != text_array[line_pos].length():
+	if read_timer == 0 and pause_timer == 0:
 		text_label.visible_characters += 1
 		read_timer = speed
 
@@ -133,19 +161,17 @@ func _ticking_sfx():
 
 ## Handles dialogue progression.
 func _text_progress():
-	prog_graphic.visible = can_continue
+	prog_graphic.visible = can_next_box
 
 	if prog_graphic.visible == false:
 		prog_graphic.frame = 0
 
-	if can_continue and Input.is_action_just_pressed(&"interact"):
-		if line_pos == text_array.size() - 1:
-			wm.niko.in_dialogue = false
-			wm.niko.can_move = true
-
-			queue_free()
-
+	if can_next_box and Input.is_action_just_pressed(&"interact"):
 		text_label.visible_characters = 0
-		can_progress = true
+		can_next_line = true
+		can_next_box = false
 
-	can_continue = text_label.visible_characters == text_array[line_pos].length()
+		wm.niko.in_dialogue = false
+		wm.niko.can_move = true
+
+		queue_free()

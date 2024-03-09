@@ -47,13 +47,13 @@ position = Vector2(152, 112)
 
 [node name="Bookshelf" parent="." instance=ExtResource("3_0wbow")]
 position = Vector2(192, 120)
-text = "[chr(nik_neutral)]
-hell o!!
+dialogue = "[chr(nik_neutral)]
+Hi! 
+[pau(30)]
+This is some debug dialogue 
 [chr(nik_silly)]
-hiiiii!!!!
-[spd(1)]
-[chr(nik_neutral)]
-im so happy to see uuu!!!"
+for trying out the new text system!
+"
 
 [node name="Bookshelf2" parent="." instance=ExtResource("3_0wbow")]
 position = Vector2(112, 120)

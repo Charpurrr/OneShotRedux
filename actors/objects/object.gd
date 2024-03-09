@@ -4,6 +4,6 @@ extends Node2D
 ## Be advised that objects are different from NPCs and Items.
 
 
-@export_multiline var text: String
+@export_multiline var dialogue: String
 ## What character is saying this?
 @export var speaker: StringName
