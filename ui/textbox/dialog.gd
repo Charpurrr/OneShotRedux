@@ -64,14 +64,16 @@ func _ready():
 
 
 func _process(_delta):
-	print([dialogue_array.size(), line_pos, can_next_line])
+	print(text_label.text.length())
 
 	_text_progress()
 
 	pause_timer = max(pause_timer - 1, 0)
 	read_timer = max(read_timer - 1, 0)
 
-	if Input.is_action_just_pressed(&"interact") and not can_next_box:
+	if Input.is_action_just_pressed(&"interact") and not can_next_box and text_label.visible_characters > 0:
+		while line_pos != dialogue_array.size():
+			handle_nextl()
 		text_label.visible_characters = text_label.text.length()
 		pause_timer = 0
 
