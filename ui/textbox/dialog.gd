@@ -27,7 +27,7 @@ var sfx_timer: int = 0
 var sfx: AudioStreamWAV = preload("res://sound/sfx/text_tick.wav")
 
 ## Timer for text speed.
-var read_timer: int = 0
+var read_timer: int = speed
 
 ## Whether or not the next line can start being handled.
 var can_next_line: bool = true

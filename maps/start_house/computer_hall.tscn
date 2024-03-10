@@ -52,8 +52,7 @@ Hi!
 [pau(30)]
 This is some debug dialogue 
 [chr(nik_silly)]
-for trying out the new text system!
-"
+for trying out the new text system!"
 
 [node name="Bookshelf2" parent="." instance=ExtResource("3_0wbow")]
 position = Vector2(112, 120)
