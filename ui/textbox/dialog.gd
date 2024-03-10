@@ -64,7 +64,7 @@ func _ready():
 
 
 func _process(_delta):
-	print(dialogue_array.size())
+	print([dialogue_array.size(), line_pos, can_next_line])
 
 	_text_progress()
 
@@ -75,14 +75,14 @@ func _process(_delta):
 		text_label.visible_characters = text_label.text.length()
 		pause_timer = 0
 
+	can_next_line = text_label.visible_characters == text_label.text.length()
+	
 	if can_next_line: 
 		handle_nextl()
 
 	if can_next_box or pause_timer != 0: 
 		return
 
-	can_next_line = text_label.visible_characters == text_label.text.length()
-	can_next_box = line_pos == dialogue_array.size()
 
 	_characters_appear()
 	_ticking_sfx()
@@ -91,20 +91,24 @@ func _process(_delta):
 ## Logic for processing and handling the next line in the dialogue.
 func handle_nextl():
 	_apply_tags()
+	if !can_next_box:
+		text_label.text = text_label.text + dialogue_array[line_pos]
 
-	text_label.text = text_label.text + dialogue_array[line_pos]
+		line_pos = min(line_pos + 1, dialogue_array.size())
 
-	line_pos = min(line_pos + 1, dialogue_array.size())
-
-	can_next_line = false
+		can_next_line = false
 
 
 ## Apply the tags if there are any. See class documentation for elaborated info on tags.
 func _apply_tags():
+	can_next_box = line_pos == dialogue_array.size()
+	if can_next_box:
+		return
 	var regex_tag:= RegEx.new()
 	regex_tag.compile(r'^\[(.*)\]$') # Regex for the brackets (group 0) and its content (group 1).
 
 	var tag: RegExMatch = regex_tag.search(dialogue_array[line_pos])
+	
 
 	if tag == null: return
 
@@ -121,7 +125,7 @@ func _apply_tags():
 		_tag_spd(int(val.get_string(1)))
 	elif tag_str.begins_with("pau"):
 		_tag_pau(int(val.get_string(1)))
-
+		
 	dialogue_array.remove_at(line_pos)
 
 
