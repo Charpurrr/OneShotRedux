@@ -64,8 +64,6 @@ func _ready():
 
 
 func _process(_delta):
-	print(text_label.text.length())
-
 	_text_progress()
 
 	pause_timer = max(pause_timer - 1, 0)
@@ -74,6 +72,7 @@ func _process(_delta):
 	if Input.is_action_just_pressed(&"interact") and not can_next_box and text_label.visible_characters > 0:
 		while line_pos != dialogue_array.size():
 			handle_nextl()
+
 		text_label.visible_characters = text_label.text.length()
 		pause_timer = 0
 
@@ -85,32 +84,30 @@ func _process(_delta):
 	if can_next_box or pause_timer != 0: 
 		return
 
-
 	_characters_appear()
 	_ticking_sfx()
 
 
 ## Logic for processing and handling the next line in the dialogue.
 func handle_nextl():
+	can_next_box = line_pos == dialogue_array.size()
+
 	_apply_tags()
+
 	if !can_next_box:
 		text_label.text = text_label.text + dialogue_array[line_pos]
-
 		line_pos = min(line_pos + 1, dialogue_array.size())
-
 		can_next_line = false
 
 
 ## Apply the tags if there are any. See class documentation for elaborated info on tags.
 func _apply_tags():
-	can_next_box = line_pos == dialogue_array.size()
-	if can_next_box:
-		return
+	if can_next_box: return
+
 	var regex_tag:= RegEx.new()
 	regex_tag.compile(r'^\[(.*)\]$') # Regex for the brackets (group 0) and its content (group 1).
 
 	var tag: RegExMatch = regex_tag.search(dialogue_array[line_pos])
-	
 
 	if tag == null: return
 
@@ -127,7 +124,7 @@ func _apply_tags():
 		_tag_spd(int(val.get_string(1)))
 	elif tag_str.begins_with("pau"):
 		_tag_pau(int(val.get_string(1)))
-		
+
 	dialogue_array.remove_at(line_pos)
 
 
@@ -144,7 +141,6 @@ func _tag_spd(new_speed: int):
 ## Apply the pause (or delay) tag.
 func _tag_pau(time: int):
 	pause_time = time
-
 	pause_timer = pause_time
 
 
