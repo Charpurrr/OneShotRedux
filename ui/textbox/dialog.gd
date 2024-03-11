@@ -34,10 +34,10 @@ var can_next_line: bool = true
 ## Whether or not the next dialog box can be prompted.
 var can_next_box: bool = false
 
-## Array for the every newline in the dialogue input variable.
+## Array for the remaining dialog lines.
 var dialogue_array: PackedStringArray
 
-## What line of the input text is being handled. (From zero)
+## What line of the dialog is being handled. (From zero)
 var line_pos: int = 0
 
 ## How fast characters appear. 
@@ -45,7 +45,7 @@ var line_pos: int = 0
 var speed: int = 2
 
 ## How long to delay text for.
-## ## (Only set this through tags.)
+## (Only set this through tags.)
 var pause_time: int
 var pause_timer: int
 
@@ -69,8 +69,8 @@ func _process(_delta):
 	pause_timer = max(pause_timer - 1, 0)
 	read_timer = max(read_timer - 1, 0)
 
-	if Input.is_action_just_pressed(&"interact") and not can_next_box and text_label.visible_characters > 0:
-		while line_pos != dialogue_array.size():
+	if Input.is_action_just_pressed(&"interact") and text_label.visible_characters > 0:
+		while not can_next_box:
 			handle_nextl()
 
 		text_label.visible_characters = text_label.text.length()
@@ -78,11 +78,11 @@ func _process(_delta):
 
 	can_next_line = text_label.visible_characters == text_label.text.length()
 	
-	if can_next_line: 
-		handle_nextl()
-
 	if can_next_box or pause_timer != 0: 
 		return
+
+	if can_next_line: 
+		handle_nextl()
 
 	_characters_appear()
 	_ticking_sfx()
@@ -94,8 +94,9 @@ func handle_nextl():
 
 	_apply_tags()
 
-	if !can_next_box:
+	if not can_next_box:
 		text_label.text = text_label.text + dialogue_array[line_pos]
+
 		line_pos = min(line_pos + 1, dialogue_array.size())
 		can_next_line = false
 
@@ -124,6 +125,8 @@ func _apply_tags():
 		_tag_spd(int(val.get_string(1)))
 	elif tag_str.begins_with("pau"):
 		_tag_pau(int(val.get_string(1)))
+	elif tag_str.begins_with("new"):
+		_tag_new()
 
 	dialogue_array.remove_at(line_pos)
 
@@ -142,6 +145,11 @@ func _tag_spd(new_speed: int):
 func _tag_pau(time: int):
 	pause_time = time
 	pause_timer = pause_time
+
+
+## Apply the new box tag.
+func _tag_new():
+	can_next_box = true
 
 
 ## Handles appearing character logic.
@@ -169,10 +177,22 @@ func _text_progress():
 		prog_graphic.frame = 0
 
 	if can_next_box and Input.is_action_just_pressed(&"interact"):
+		dialogue_array = dialogue_array.slice(line_pos)
+
+		if dialogue_array.is_empty():
+			end_dialogue()
+
+		line_pos = 0
+
+		text_label.text = ""
 		text_label.visible_characters = 0
+
 		can_next_line = true
 		can_next_box = false
 
+
+## End the current conversation.
+func end_dialogue():
 		wm.niko.in_dialogue = false
 		wm.niko.can_move = true
 

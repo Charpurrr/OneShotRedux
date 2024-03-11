@@ -314,8 +314,8 @@ texture = ExtResource("4_5qsl3")
 
 [node name="ContextPopup" type="AnimatedSprite2D" parent="."]
 unique_name_in_owner = true
-visible = false
 position = Vector2(0, -42)
 sprite_frames = SubResource("SpriteFrames_tex8l")
+autoplay = "default"
 frame = 1
 frame_progress = 0.889448
