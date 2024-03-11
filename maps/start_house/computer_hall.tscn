@@ -47,16 +47,25 @@ position = Vector2(152, 112)
 
 [node name="Bookshelf" parent="." instance=ExtResource("3_0wbow")]
 position = Vector2(192, 120)
-dialogue = "[chr(nik_neutral)]
+dialogue = "[chr(nik_open)]
 Hi! 
-[pau(30)]
-This is some debug dialogue 
-[chr(nik_silly)]
-for trying out the new text system!
-[new]
 [chr(nik_neutral)]
-Collect my 8 author notes. 
 [pau(30)]
+[chr(nik_neutral_open)]
+This is some debug dialogue 
+[chr(nik_open)]
+for trying out the new text system!
+[chr(nik_neutral)]
+[new]
+[chr(nik_mask)]
+Collect my author notes. 
+[chr(nik_neutral)]
+[pau(100)]
+[chr(nik_look)]
+[pau(100)]
+[chr(nik_look_alt)]
+[pau(100)]
+[chr(nik_silly)]
 Or else..."
 
 [node name="Bookshelf2" parent="." instance=ExtResource("3_0wbow")]

@@ -69,15 +69,16 @@ func _process(_delta):
 	pause_timer = max(pause_timer - 1, 0)
 	read_timer = max(read_timer - 1, 0)
 
+	# Skipping dialogue.
 	if Input.is_action_just_pressed(&"interact") and text_label.visible_characters > 0:
 		while not can_next_box:
 			handle_nextl()
 
-		text_label.visible_characters = text_label.text.length()
-		pause_timer = 0
+			text_label.visible_characters = text_label.text.length()
+			pause_timer = 0
 
 	can_next_line = text_label.visible_characters == text_label.text.length()
-	
+
 	if can_next_box or pause_timer != 0: 
 		return
 
@@ -90,45 +91,60 @@ func _process(_delta):
 
 ## Logic for processing and handling the next line in the dialogue.
 func handle_nextl():
+	if pause_timer != 0: return
+
 	can_next_box = line_pos == dialogue_array.size()
 
-	_apply_tags()
-
 	if not can_next_box:
-		text_label.text = text_label.text + dialogue_array[line_pos]
+		var tag: RegExMatch = _check_tag()
 
-		line_pos = min(line_pos + 1, dialogue_array.size())
-		can_next_line = false
+		if tag != null:
+			_apply_tag(tag)
+		else:
+			text_label.text = text_label.text + dialogue_array[line_pos]
+
+			line_pos = min(line_pos + 1, dialogue_array.size())
+			can_next_line = false
 
 
-## Apply the tags if there are any. See class documentation for elaborated info on tags.
-func _apply_tags():
-	if can_next_box: return
-
+## Check for a tag on this line of the dialogue and return it. 
+## See class documentation for elaborated info on tags.
+func _check_tag() -> RegExMatch:
 	var regex_tag:= RegEx.new()
-	regex_tag.compile(r'^\[(.*)\]$') # Regex for the brackets (group 0) and its content (group 1).
+
+	# Regex for the brackets (group 0) and its content (group 1).
+	regex_tag.compile(r'^\[(.*)\]$') 
 
 	var tag: RegExMatch = regex_tag.search(dialogue_array[line_pos])
 
-	if tag == null: return
+	return tag
 
+
+## Apply a tag if found.
+func _apply_tag(tag: RegExMatch):
 	var tag_str = tag.get_string(1)
 
 	var regex_val:= RegEx.new()
-	regex_val.compile(r'\((.*)\)') # Regex for the parentheses (group 0) and its content (group 1).
+
+	# Regex for the parentheses (group 0) and its content (group 1).
+	regex_val.compile(r'\((.*)\)') 
 
 	var val: RegExMatch = regex_val.search(tag_str)
 
-	if tag_str.begins_with("chr"):
-		_tag_chr(val.get_string(1))
-	elif tag_str.begins_with("spd"):
-		_tag_spd(int(val.get_string(1)))
-	elif tag_str.begins_with("pau"):
-		_tag_pau(int(val.get_string(1)))
-	elif tag_str.begins_with("new"):
+	if tag_str != "new":
+		if tag_str.begins_with("chr"):
+			_tag_chr(val.get_string(1))
+		elif tag_str.begins_with("spd"):
+			_tag_spd(int(val.get_string(1)))
+		elif tag_str.begins_with("pau"):
+			_tag_pau(int(val.get_string(1)))
+
+		dialogue_array.remove_at(line_pos)
+		handle_nextl()
+	else:
 		_tag_new()
 
-	dialogue_array.remove_at(line_pos)
+		dialogue_array.remove_at(line_pos)
 
 
 ## Apply the character portrait tag.
@@ -163,7 +179,7 @@ func _characters_appear():
 func _ticking_sfx():
 	sfx_timer = max(sfx_timer - 1, 0)
 
-	if sfx_timer == 0:
+	if sfx_timer == 0 and pause_timer == 0:
 		SFX.play_sfx(sfx, self, &"SFX")
 
 		sfx_timer = sfx_time

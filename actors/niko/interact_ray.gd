@@ -6,11 +6,16 @@ extends RayCast2D
 @onready var context: AnimatedSprite2D = %ContextPopup
 @onready var niko: CharacterBody2D = get_parent()
 
+const FADE_STEP: float = 0.2
+
 var dialog_box_scene: PackedScene = preload("res://ui/textbox/dialog.tscn")
 
 
-func _process(_delta):
-	context.visible = is_colliding()
+func _physics_process(_delta):
+	if (is_colliding() and context.modulate.a != 1) and not niko.in_dialogue:
+		context.modulate.a = min(context.modulate.a + FADE_STEP, 1)
+	elif (not is_colliding() and context.modulate.a != 0) or niko.in_dialogue:
+		context.modulate.a = max(context.modulate.a - FADE_STEP, 0)
 
 
 func _input(_event):

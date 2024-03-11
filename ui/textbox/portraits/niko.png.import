@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c620mbnwjkjnf"
-path="res://.godot/imported/placeholder_2.png-b61a49a455790be086a66773a558cd93.ctex"
+uid="uid://b7qktxktmihq4"
+path="res://.godot/imported/niko.png-2d8391e1262a065da8dedaf5f36438d8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://ui/textbox/placeholder_2.png"
-dest_files=["res://.godot/imported/placeholder_2.png-b61a49a455790be086a66773a558cd93.ctex"]
+source_file="res://ui/textbox/portraits/niko.png"
+dest_files=["res://.godot/imported/niko.png-2d8391e1262a065da8dedaf5f36438d8.ctex"]
 
 [params]
 
