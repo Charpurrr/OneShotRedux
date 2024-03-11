@@ -1,15 +1,39 @@
 class_name Dialog
 extends CanvasLayer
-## Character dialogue.[br][br]
-## Dialog includes a tag system that you can define custom behaviour to.[br]
-## [u]WARNING: When making use of tags, seperate them on newlines to avoid unintended behaviour![/u][br][br]
-## a character portrait with « [chr(animation: StringName)] »,[br]
-## [i]This makes the character portrait play the corresponding animation as defined by the StringName.[/i][br]
-## and set text speed with « [spd(new_speed: int)] »[br]
-## [i]This makes characters appear at the rate of new_speed.[/i][br][br]
-## EXAMPLE: [br][br][i]
-##[spd(3)][br][chr(nik_neutral)][br]This is the first dialog prompt with a text speed of 3fps and a neutral character portrait of Niko.[br]
-## [new][br][spd(6)][br][chr(nik_silly)][br]This is the second dialog prompt with a text speed of 6fps and a silly character portrait of Niko.
+## Character dialogue.
+## 
+## [u]Make sure your dialogue is spread across newlines, to avoid unintended behaviour.[/u]
+## [br]
+## [i]See the example document for more information on the proper usage of the tags and syntax.[/i]
+## [br]
+## [br]
+## [u]TAG LIST:[/u]
+## [br]
+## [br]
+## [b]« [chr(animation: StringName)] »[/b]
+## [br]
+## [i]This makes the character portrait play the corresponding animation as defined by the StringName.
+## [br]
+## See the Portrait (AnimatedSprite2D) node for an exhaustive list of every available animation.[/i]
+## [br]
+## [br]
+## [b]« [spd(new_speed: int)] »[/b]
+## [br]
+## [i]This makes characters appear at the rate of the integer. (in frames)[/i]
+## [br]
+## [br]
+## [b]« [pau(pause_time: int)] »[/b]
+## [br]
+## [i]This makes the text delay for as long as defined by the integer. (in frames)[/i]
+## [br]
+## [br]
+## [b]« [new] »[/b]
+## [br]
+## [i]This makes the dialogue continue on a new dialog box.
+## [br]
+## Note that dialogue does not automatically place itself in another box when overflowing 
+## the text space of the Text label.[/i]
+
 
 @onready var wm: WorldMachine = $/root/WorldMachine
 
