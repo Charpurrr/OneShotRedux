@@ -4,7 +4,7 @@ extends CanvasLayer
 ## 
 ## [u]Make sure your dialogue is spread across newlines, to avoid unintended behaviour.[/u]
 ## [br]
-## [i]See the example document for more information on the proper usage of the tags and syntax.[/i]
+## [i]See the example document for more information on the proper usage of tags and syntax.[/i]
 ## [br]
 ## [br]
 ## [u]TAG LIST:[/u]
@@ -93,7 +93,7 @@ func _process(_delta):
 	pause_timer = max(pause_timer - 1, 0)
 	read_timer = max(read_timer - 1, 0)
 
-	# Skipping dialogue.
+	# Skipping a dialogue box.
 	if Input.is_action_just_pressed(&"interact") and text_label.visible_characters > 0:
 		while not can_next_box:
 			handle_nextl()
@@ -103,11 +103,10 @@ func _process(_delta):
 
 	can_next_line = text_label.visible_characters == text_label.text.length()
 
-	if can_next_box or pause_timer != 0: 
-		return
+	if can_next_box: return
+	if pause_timer != 0: return
 
-	if can_next_line: 
-		handle_nextl()
+	if can_next_line: handle_nextl()
 
 	_characters_appear()
 	_ticking_sfx()
@@ -155,7 +154,11 @@ func _apply_tag(tag: RegExMatch):
 
 	var val: RegExMatch = regex_val.search(tag_str)
 
-	if tag_str != "new":
+	if tag_str == "new":
+		_tag_new()
+
+		dialogue_array.remove_at(line_pos)
+	else:
 		if tag_str.begins_with("chr"):
 			_tag_chr(val.get_string(1))
 		elif tag_str.begins_with("spd"):
@@ -165,10 +168,6 @@ func _apply_tag(tag: RegExMatch):
 
 		dialogue_array.remove_at(line_pos)
 		handle_nextl()
-	else:
-		_tag_new()
-
-		dialogue_array.remove_at(line_pos)
 
 
 ## Apply the character portrait tag.

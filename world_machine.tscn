@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://teyv324guihi"]
+[gd_scene load_steps=8 format=3 uid="uid://teyv324guihi"]
 
 [ext_resource type="Script" path="res://world_machine.gd" id="1_t7pnh"]
 [ext_resource type="PackedScene" uid="uid://cj81lcigmv75t" path="res://actors/niko/niko.tscn" id="2_3yced"]
 [ext_resource type="Script" path="res://utils/transition.gd" id="2_oymye"]
 [ext_resource type="Script" path="res://utils/room_coordinator.gd" id="3_axh51"]
+[ext_resource type="Script" path="res://ui/ui.gd" id="3_ktene"]
 [ext_resource type="Script" path="res://actors/niko/camera.gd" id="3_vs8hw"]
 [ext_resource type="AudioStream" uid="uid://bkoufwplgohmn" path="res://sound/music/someplaceiknow.ogg" id="6_psqtr"]
 
@@ -25,6 +26,7 @@ size_flags_vertical = 4
 color = Color(0.0470588, 0.00392157, 0.0588235, 0)
 
 [node name="UI" type="CanvasLayer" parent="."]
+script = ExtResource("3_ktene")
 
 [node name="RoomCoordinator" type="Node2D" parent="."]
 z_as_relative = false

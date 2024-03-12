@@ -13,8 +13,6 @@ extends CharacterBody2D
 @onready var occluder_h: LightOccluder2D = $LightOccluderHorizontal
 @onready var occluder_v: LightOccluder2D = $LightOccluderVertical
 
-const PAUSE_MENU: PackedScene = preload("res://ui/pause_screen/pause_screen.tscn")
-
 const RUN_SPEED: int = 100
 const SPEED: int = 50
 
@@ -37,7 +35,6 @@ func _physics_process(_delta):
 	move_and_slide()
 	_set_animation()
 	_movement()
-	_pause()
 
 	if can_move == true:
 		input_vector = Input.get_vector("left", "right", "up", "down")
@@ -107,12 +104,6 @@ func _set_occluder(signed_vector: Vector2):
 	if signed_vector != Vector2.ZERO:
 		occluder_v.visible = facing_direction == "left" or facing_direction == "right"
 		occluder_h.visible = facing_direction == "up" or facing_direction == "down"
-
-
-## Open the pause menu.
-func _pause():
-	if Input.is_action_just_pressed("pause"):
-		add_child(PAUSE_MENU.instantiate())
 
 
 ## Update Niko's facing_direction.
