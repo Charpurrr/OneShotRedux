@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://cdmf1r1mrgi3h"]
 
 [ext_resource type="Texture2D" uid="uid://dntkqbmkbqwdq" path="res://ui/textbox/chara_icons.png" id="1_s0sql"]
-[ext_resource type="FontFile" uid="uid://dllequbm0tu6k" path="res://ui/determination.ttf" id="2_ip5ds"]
+[ext_resource type="FontFile" uid="uid://b0dv14ehbccrl" path="res://ui/oneshot_font_code.fnt" id="2_q1qxj"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yq5bo"]
 atlas = ExtResource("1_s0sql")
@@ -23,11 +23,11 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="LabelSettings" id="LabelSettings_p2o4q"]
-font = ExtResource("2_ip5ds")
-
 [sub_resource type="LabelSettings" id="LabelSettings_7yocy"]
-font = ExtResource("2_ip5ds")
+font = ExtResource("2_q1qxj")
+
+[sub_resource type="LabelSettings" id="LabelSettings_p2o4q"]
+font = ExtResource("2_q1qxj")
 
 [node name="LogbookElement" type="Control"]
 layout_mode = 3
@@ -40,28 +40,39 @@ position = Vector2(8, 8)
 sprite_frames = SubResource("SpriteFrames_psccf")
 animation = &"niko"
 
-[node name="Speaker" type="Label" parent="."]
-offset_left = 23.0
-offset_right = 227.0
-offset_bottom = 17.0
-text = "niko.EXE"
-label_settings = SubResource("LabelSettings_p2o4q")
-
 [node name="Text" type="Label" parent="."]
+layout_mode = 0
 offset_left = 31.0
 offset_top = 16.0
 offset_right = 608.0
-offset_bottom = 93.0
+offset_bottom = 233.0
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.0666667)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 text = "Hey guys, did you know that in terms of human companionship, Flareon is objectively the most huggable Pokemon? While their maximum temperature is likely too much for most, they are capable of controlling it, so they can set themselves to the perfect temperature for you. Along with that, they have a lot of fluff, making them undeniably incredibly soft to touch. But that's not all, they have a very respectable special defense stat of 110, which means that they are likely very calm and resistant to emotional damage. Because of this, if you have a bad day, you can vent to it while hugging it, and it won't mind. It can make itself even more endearing with moves like Charm and Baby Doll Eyes, ensuring that you never have a prolonged bout of depression ever again. "
 label_settings = SubResource("LabelSettings_7yocy")
 autowrap_mode = 3
-visible_characters = -128
-visible_ratio = -0.166667
+visible_characters = 0
+visible_ratio = 0.0
+
+[node name="Speaker" type="Label" parent="."]
+layout_mode = 0
+offset_left = 23.0
+offset_right = 70.0
+offset_bottom = 10.0
+text = "niko.EXE"
+label_settings = SubResource("LabelSettings_p2o4q")
+
+[node name="Time" type="Label" parent="."]
+layout_mode = 0
+offset_left = 400.0
+offset_right = 608.0
+offset_bottom = 17.0
+text = "00:00"
+label_settings = SubResource("LabelSettings_p2o4q")
+horizontal_alignment = 2
 
 [node name="Control" type="ColorRect" parent="."]
-visible = false
+z_index = -1
 clip_contents = true
 layout_mode = 1
 anchors_preset = 15

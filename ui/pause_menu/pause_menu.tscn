@@ -1,75 +1,133 @@
-[gd_scene load_steps=2 format=3 uid="uid://d1261754e8yoj"]
+[gd_scene load_steps=20 format=3 uid="uid://bgr5ecb4p52ft"]
 
-[ext_resource type="Script" path="res://ui/pause_menu/pause_menu.gd" id="1_u5t58"]
+[ext_resource type="Script" path="res://ui/pause_menu/pause_menu.gd" id="1_6vcvt"]
+[ext_resource type="Texture2D" uid="uid://corws0wb8o7jw" path="res://ui/pause_menu/menu.png" id="2_s4470"]
+[ext_resource type="FontFile" uid="uid://b0dv14ehbccrl" path="res://ui/oneshot_font_code.fnt" id="3_kqo70"]
+[ext_resource type="Texture2D" uid="uid://cbtb3wk2sundl" path="res://ui/graphics/selection_box.png" id="4_ydsn5"]
+[ext_resource type="Texture2D" uid="uid://d2ph806207r0t" path="res://ui/pause_menu/menu_baked_text.png" id="5_ytwhv"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_vnv5q"]
+font = ExtResource("3_kqo70")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yswif"]
+atlas = ExtResource("4_ydsn5")
+region = Rect2(0, 0, 138, 22)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3lpp1"]
+atlas = ExtResource("4_ydsn5")
+region = Rect2(0, 22, 138, 22)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7swgu"]
+atlas = ExtResource("4_ydsn5")
+region = Rect2(0, 44, 138, 22)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0sa2u"]
+atlas = ExtResource("4_ydsn5")
+region = Rect2(0, 66, 138, 22)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7y7mo"]
+atlas = ExtResource("4_ydsn5")
+region = Rect2(0, 88, 138, 22)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ypxet"]
+atlas = ExtResource("4_ydsn5")
+region = Rect2(0, 110, 138, 22)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bxj53"]
+atlas = ExtResource("4_ydsn5")
+region = Rect2(0, 132, 138, 22)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_itw8q"]
+atlas = ExtResource("4_ydsn5")
+region = Rect2(0, 154, 138, 22)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qn7ne"]
+atlas = ExtResource("4_ydsn5")
+region = Rect2(0, 176, 138, 22)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ams1c"]
+atlas = ExtResource("4_ydsn5")
+region = Rect2(0, 198, 138, 22)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0vfjw"]
+atlas = ExtResource("4_ydsn5")
+region = Rect2(0, 220, 138, 22)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mcqu8"]
+atlas = ExtResource("4_ydsn5")
+region = Rect2(0, 242, 138, 22)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_oq083"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yswif")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3lpp1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7swgu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0sa2u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7y7mo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ypxet")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bxj53")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_itw8q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qn7ne")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ams1c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0vfjw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mcqu8")
+}],
+"loop": true,
+"name": &"pulse",
+"speed": 20.0
+}]
 
 [node name="PauseMenu" type="CanvasLayer"]
-process_mode = 3
-script = ExtResource("1_u5t58")
+script = ExtResource("1_6vcvt")
 
-[node name="Control" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 10
-anchor_right = 1.0
-offset_bottom = 56.0
-grow_horizontal = 2
+[node name="Main" type="TextureRect" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("2_s4470")
 
-[node name="ScrollContainer" type="ScrollContainer" parent="Control"]
+[node name="Time" type="Label" parent="Main"]
+unique_name_in_owner = true
 layout_mode = 0
-offset_left = 96.0
-offset_top = 88.0
-offset_right = 512.0
-offset_bottom = 448.0
-follow_focus = true
-horizontal_scroll_mode = 0
-vertical_scroll_mode = 2
+offset_left = 188.0
+offset_top = 8.0
+offset_right = 603.0
+offset_bottom = 18.0
+text = "00 : 00"
+label_settings = SubResource("LabelSettings_vnv5q")
+horizontal_alignment = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Control/ScrollContainer"]
-layout_mode = 2
+[node name="SelectionBox" type="AnimatedSprite2D" parent="Main"]
+position = Vector2(79, 38)
+sprite_frames = SubResource("SpriteFrames_oq083")
+animation = &"pulse"
+autoplay = "pulse"
 
-[node name="ColorRect" type="ColorRect" parent="Control/ScrollContainer/VBoxContainer"]
-layout_mode = 2
-
-[node name="ColorRect2" type="ColorRect" parent="Control/ScrollContainer/VBoxContainer"]
-layout_mode = 2
-
-[node name="ColorRect3" type="ColorRect" parent="Control/ScrollContainer/VBoxContainer"]
-layout_mode = 2
-
-[node name="ColorRect4" type="ColorRect" parent="Control/ScrollContainer/VBoxContainer"]
-layout_mode = 2
-
-[node name="HBoxContainer" type="HBoxContainer" parent="Control"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Travel" type="Button" parent="Control/HBoxContainer"]
-custom_minimum_size = Vector2(-0.92, 0)
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_stretch_ratio = 0.5
-text = "Travel"
-
-[node name="Notes" type="Button" parent="Control/HBoxContainer"]
-custom_minimum_size = Vector2(-0.92, 0)
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_stretch_ratio = 0.5
-text = "Notes"
-
-[node name="Logbook" type="Button" parent="Control/HBoxContainer"]
-custom_minimum_size = Vector2(-0.92, 0)
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_stretch_ratio = 0.5
-text = "Logbook"
-
-[node name="Option" type="Button" parent="Control/HBoxContainer"]
-custom_minimum_size = Vector2(-0.92, 0)
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_stretch_ratio = 0.5
-text = "Options"
+[node name="BakedText" type="TextureRect" parent="Main"]
+layout_mode = 0
+offset_right = 608.0
+offset_bottom = 480.0
+texture = ExtResource("5_ytwhv")

@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://dntkqbmkbqwdq" path="res://ui/textbox/chara_icons.png" id="4_e0s8q"]
 [ext_resource type="Texture2D" uid="uid://b7qktxktmihq4" path="res://ui/textbox/portraits/niko.png" id="4_ekowy"]
 [ext_resource type="Texture2D" uid="uid://dxliqp6pu6tf6" path="res://ui/textbox/progress.png" id="5_yjhab"]
-[ext_resource type="FontFile" uid="uid://dllequbm0tu6k" path="res://ui/determination.ttf" id="6_ykon2"]
+[ext_resource type="FontFile" uid="uid://b0dv14ehbccrl" path="res://ui/oneshot_font_code.fnt" id="6_5lgkb"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yq5bo"]
 atlas = ExtResource("4_e0s8q")
@@ -437,10 +437,10 @@ animations = [{
 }]
 
 [sub_resource type="LabelSettings" id="LabelSettings_c784r"]
-font = ExtResource("6_ykon2")
+font = ExtResource("6_5lgkb")
 
 [sub_resource type="LabelSettings" id="LabelSettings_f5x8e"]
-font = ExtResource("6_ykon2")
+font = ExtResource("6_5lgkb")
 
 [node name="DialogBox" type="CanvasLayer"]
 script = ExtResource("1_53xd4")
@@ -488,9 +488,9 @@ frame_progress = 0.56134
 
 [node name="Speaker" type="Label" parent="."]
 offset_left = 83.0
-offset_top = 349.0
+offset_top = 352.0
 offset_right = 287.0
-offset_bottom = 366.0
+offset_bottom = 362.0
 text = "niko.EXE"
 label_settings = SubResource("LabelSettings_c784r")
 

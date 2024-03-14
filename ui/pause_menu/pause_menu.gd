@@ -4,15 +4,13 @@ extends CanvasLayer
 
 
 @onready var ui: UserInterface = get_parent()
+@onready var time_label: Label = %Time
+
+## The current local system time as a dictionary. (hour, minute, second)
+var time: Dictionary
 
 
-func _ready():
-	ui.niko.can_move = false
+func _process(_delta):
+	time = Time.get_time_dict_from_system()
 
-
-func _input(_event):
-	if Input.is_action_just_pressed(&"cancel"):
-		ui.niko.can_move = true
-		ui.paused = false
-
-		queue_free()
+	time_label.text = "%02d : %02d" % [time.hour, time.minute]

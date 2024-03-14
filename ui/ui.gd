@@ -14,9 +14,21 @@ func _process(_delta):
 	_pausing()
 
 
-## Handles pausing the game alongside opening its menu.
+## Handles pausing and unpausing the game.
 func _pausing():
-	if Input.is_action_just_pressed(&"pause") and not paused and not niko.in_dialogue:
-		add_child(PAUSE_MENU.instantiate())
+	if niko.in_dialogue: return
 
+	var pause_scene: PauseMenu = PAUSE_MENU.instantiate()
+
+	# Pause
+	if Input.is_action_just_pressed(&"pause") and not paused:
+		add_child(pause_scene)
+
+		niko.can_move = true
 		paused = true
+	# Unpause
+	elif (Input.is_action_just_pressed(&"pause") or Input.is_action_just_pressed(&"cancel")):
+		pause_scene.queue_free()
+
+		niko.can_move = false
+		paused = false

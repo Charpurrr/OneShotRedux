@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ouah0vo6828k"
-path="res://.godot/imported/oneshot_font.png-f42db0aa2865875dd1e8e89295ef9b0f.ctex"
+uid="uid://d2ph806207r0t"
+path="res://.godot/imported/menu_baked_text.png-3030f5bfbd111fed70086f3f48c05ed9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://ui/oneshot_font.png"
-dest_files=["res://.godot/imported/oneshot_font.png-f42db0aa2865875dd1e8e89295ef9b0f.ctex"]
+source_file="res://ui/pause_menu/menu_baked_text.png"
+dest_files=["res://.godot/imported/menu_baked_text.png-3030f5bfbd111fed70086f3f48c05ed9.ctex"]
 
 [params]
 
